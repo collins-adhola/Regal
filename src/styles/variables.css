@@ -1,0 +1,22 @@
+:root {
+  --navy: #0F2A44;
+  --navy-dark: #081E30;
+  --navy-light: #173B5A;
+  --gold: #D4AF37;
+  --gold-dark: #B99222;
+  --white: #FFFFFF;
+  --light-bg: #F5F7FA;
+  --text: #1E293B;
+  --muted: #64748B;
+  --border: #E2E8F0;
+
+  --container: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --shadow-soft: 0 10px 30px rgba(15, 42, 68, 0.08);
+  --shadow-card: 0 18px 45px rgba(15, 42, 68, 0.12);
+
+  --transition: 0.25s ease;
+}
