@@ -14,10 +14,10 @@ const NAV_LINKS = [
 ]
 
 const WHY_ITEMS = [
-  { icon: '✦', title: 'Trained Teams' },
-  { icon: '✦', title: 'Rapid Response' },
-  { icon: '✦', title: 'HSE Compliant' },
-  { icon: '✦', title: 'Performance Reporting' },
+  { icon: '✦', title: 'Single-Point Accountability' },
+  { icon: '✦', title: 'SLA Tracking & Reporting' },
+  { icon: '✦', title: 'HSE-Compliant Delivery' },
+  { icon: '✦', title: 'Cost-Efficient Model' },
 ] as const
 
 const SERVICES = [
@@ -25,27 +25,59 @@ const SERVICES = [
     img:  cleaningImg,
     icon: '🧹',
     title: 'Cleaning & Hygiene',
-    desc: 'Structured cleaning programmes for offices, schools and commercial properties, delivered to consistent hygiene and quality standards.',
+    desc: 'Structured cleaning and hygiene programmes for offices, schools and commercial sites, with documented quality controls and integrated waste management.',
   },
   {
     img:  maintenanceImg,
     icon: '⚙️',
     title: 'Maintenance & Repairs',
-    desc: 'Planned preventive and reactive maintenance covering plumbing, electrical and general building infrastructure across all property types.',
+    desc: 'Preventive and reactive maintenance for electrical, plumbing, HVAC and building fabric — keeping assets operational and reducing lifecycle costs.',
   },
   {
     img:  pestControlImg,
     icon: '🛡️',
     title: 'Pest Control',
-    desc: 'Integrated pest management combining targeted treatment and scheduled prevention to protect occupant health and property integrity.',
+    desc: 'Integrated pest management combining scheduled prevention and targeted treatment to protect occupant health and maintain regulatory compliance.',
   },
   {
     img:  propertyCareImg,
     icon: '🏢',
     title: 'Property Care',
-    desc: 'End-to-end upkeep for residential estates, institutional facilities and commercial rentals with documented service delivery.',
+    desc: 'Grounds and property upkeep for estates, institutional facilities and commercial sites with condition reporting and documented service delivery.',
   },
 ]
+
+const SECTORS = [
+  { title: 'Corporate Offices',      desc: 'Commercial workplaces and mixed-use business properties' },
+  { title: 'Residential Estates',    desc: 'Condominiums, gated communities and managed developments' },
+  { title: 'Hospitals & Clinics',    desc: 'Medical centres, clinics and healthcare facilities' },
+  { title: 'Schools & Universities', desc: 'Educational campuses, colleges and academic institutions' },
+  { title: 'Government Buildings',   desc: 'Public sector facilities and contractor-managed sites' },
+  { title: 'Retail & Mixed Use',     desc: 'Shopping malls, industrial parks and commercial precincts' },
+] as const
+
+const PROCESS_STEPS = [
+  {
+    num: '01',
+    title: 'Site Assessment',
+    desc: 'Free compliance review and facility audit covering building systems, risks and service requirements.',
+  },
+  {
+    num: '02',
+    title: 'Service Planning',
+    desc: 'Tailored IFM plan with scheduled maintenance, vendor coordination and clear service deliverables.',
+  },
+  {
+    num: '03',
+    title: 'Operational Delivery',
+    desc: 'Trained teams deployed with single-point accountability and fully documented service execution.',
+  },
+  {
+    num: '04',
+    title: 'Reporting & Review',
+    desc: 'Monthly performance data, work order records and structured continuous improvement reviews.',
+  },
+] as const
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -113,7 +145,7 @@ function App() {
               </div>
 
               <p className="hero-eyebrow">
-                Uganda's Trusted Facilities Management Partner
+                Integrated Facility Management · Uganda
               </p>
 
               <h1 className="hero-heading">
@@ -122,25 +154,25 @@ function App() {
               </h1>
 
               <p className="hero-body">
-                Professional cleaning, maintenance, pest control, landscaping and
-                property support services delivered to commercial and residential
-                clients across Uganda.
+                Regal delivers disciplined facility services for corporate offices,
+                institutions and residential estates across Uganda — keeping your
+                buildings compliant, safe and fully operational.
               </p>
 
               <ul className="hero-features">
-                <li>Trained Teams</li>
-                <li>SLA Reporting</li>
-                <li>HSE Compliant</li>
-                <li>Rapid Response</li>
+                <li>Single-Point Accountability</li>
+                <li>Enterprise SLA Reporting</li>
+                <li>HSE-Compliant Delivery</li>
+                <li>Rapid Response Teams</li>
               </ul>
 
               <div className="hero-actions">
-                <a href="#contact" className="btn btn-primary">Get a Free Quote</a>
+                <a href="#contact" className="btn btn-primary">Request a Site Assessment</a>
                 <a href="#services" className="btn btn-outline">View Services</a>
               </div>
 
               <p className="hero-trust">
-                Trusted by businesses, schools and residential estates across Kampala.
+                Trusted by schools, clinics, residential estates and government contractors across Uganda.
               </p>
             </div>
 
@@ -165,11 +197,11 @@ function App() {
           <div className="container">
 
             <header className="section-header">
-              <p className="section-eyebrow">What We Offer</p>
+              <p className="section-eyebrow">What We Deliver</p>
               <h2 className="section-heading">Core Facilities Services</h2>
               <p className="section-lead">
-                Essential property support delivered with professional standards
-                and clear reporting.
+                Technical maintenance and workspace care combined into one streamlined
+                programme that preserves asset value and improves daily performance.
               </p>
             </header>
 
@@ -205,10 +237,10 @@ function App() {
             {/* ── Left: text + trust items ── */}
             <div className="wr-content">
               <p className="section-eyebrow">Why Regal</p>
-              <h2 className="wr-heading">Operational Standards Businesses Can Rely On</h2>
+              <h2 className="wr-heading">Why Choose Regal</h2>
               <p className="wr-lead">
-                Structured facilities management delivered with trained personnel,
-                responsive coordination and measurable service standards.
+                One accountable partner. Trained teams. Measurable standards.
+                Cost-focused delivery built for public and private sector clients.
               </p>
 
               <div className="wr-trust-grid">
@@ -239,17 +271,62 @@ function App() {
 
           </div>
         </section>
+        {/* ── Sectors We Serve ── */}
+        <section id="sectors" className="sectors">
+          <div className="container">
+            <header className="section-header">
+              <p className="section-eyebrow">Where We Work</p>
+              <h2 className="section-heading">Sectors We Serve</h2>
+              <p className="section-lead">
+                Supporting the facilities that matter most — workplaces, campuses,
+                healthcare sites, estates and public assets across Uganda.
+              </p>
+            </header>
+            <div className="sectors-grid">
+              {SECTORS.map(({ title, desc }) => (
+                <div key={title} className="sector-card">
+                  <p className="sector-title">{title}</p>
+                  <p className="sector-desc">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── How We Engage ── */}
+        <section id="process" className="process">
+          <div className="container">
+            <header className="section-header">
+              <p className="section-eyebrow">Our Approach</p>
+              <h2 className="section-heading">How We Engage</h2>
+              <p className="section-lead">
+                A structured four-stage process — from initial site review to
+                ongoing performance reporting and continuous improvement.
+              </p>
+            </header>
+            <div className="process-steps">
+              {PROCESS_STEPS.map(({ num, title, desc }) => (
+                <div key={num} className="process-step">
+                  <div className="process-num">{num}</div>
+                  <h3 className="process-title">{title}</h3>
+                  <p className="process-desc">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="contact">
           <div className="container contact-inner">
 
             {/* ── Left: info ── */}
             <div className="ct-info">
               <p className="section-eyebrow">Contact</p>
-              <h2 className="ct-heading">Let's Discuss Your Facilities Requirements</h2>
+              <h2 className="ct-heading">Start Your Facilities Partnership</h2>
               <p className="ct-lead">
-                Whether you need routine facilities support, emergency response
-                services or property maintenance coordination, Regal is ready
-                to assist.
+                Reach out to discuss your facility management requirements.
+                We provide fast, professional proposals for corporate,
+                institutional and residential clients across Uganda.
               </p>
 
               <div className="ct-cards">
@@ -265,8 +342,8 @@ function App() {
                   </div>
                   <div>
                     <p className="ct-card-label">Email</p>
-                    <a href="mailto:elvis@regalfacilities.com" className="ct-card-value">
-                      elvis@regalfacilities.com
+                    <a href="mailto:regalpropertysmc@gmail.com" className="ct-card-value">
+                      regalpropertysmc@gmail.com
                     </a>
                   </div>
                 </div>
@@ -306,8 +383,8 @@ function App() {
             {/* ── Right: form ── */}
             <div className="ct-form-wrap">
               <div className="ct-form-header">
-                <h3 className="ct-form-title">Request a Quote</h3>
-                <p className="ct-form-subtitle">We respond within one business day.</p>
+                <h3 className="ct-form-title">Request a Proposal</h3>
+                <p className="ct-form-subtitle">Fast, professional proposals for corporate and institutional clients.</p>
               </div>
 
               <form className="ct-form" noValidate>
@@ -374,7 +451,7 @@ function App() {
                 </div>
 
                 <button type="submit" className="btn btn-primary ct-submit">
-                  Request a Quote
+                  Request a Proposal
                   <span className="ct-submit-arrow" aria-hidden="true">→</span>
                 </button>
 
@@ -431,8 +508,8 @@ function App() {
               <div className="ft-contact-items">
                 <div className="ft-contact-item">
                   <span className="ft-contact-label">Email</span>
-                  <a href="mailto:elvis@regalfacilities.com" className="ft-contact-value">
-                    elvis@regalfacilities.com
+                  <a href="mailto:regalpropertysmc@gmail.com" className="ft-contact-value">
+                    regalpropertysmc@gmail.com
                   </a>
                 </div>
                 <div className="ft-contact-item">
