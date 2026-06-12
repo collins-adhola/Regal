@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import cleaningImg      from './assets/services/cleaning.svg'
-import maintenanceImg   from './assets/services/maintenance.svg'
-import pestControlImg   from './assets/services/pest-control.svg'
-import propertyCareImg  from './assets/services/property-care.svg'
+import heroImg          from './assets/services/hero1.jpeg'
+import cleaningImg      from './assets/services/cleaning.jpeg'
+import maintenanceImg   from './assets/services/maintenance.jpeg'
+import pestControlImg   from './assets/services/pest-control.jpeg'
+import propertyCareImg  from './assets/services/property-care.jpeg'
 
 const NAV_LINKS = [
   { label: 'Home',      href: '#home'      },
@@ -16,25 +17,25 @@ const SERVICES = [
     img:  cleaningImg,
     icon: '🧹',
     title: 'Cleaning & Hygiene',
-    desc: 'Professional cleaning for homes, offices, schools and clinics.',
+    desc: 'Structured cleaning programmes for offices, schools and commercial properties, delivered to consistent hygiene and quality standards.',
   },
   {
     img:  maintenanceImg,
     icon: '⚙️',
     title: 'Maintenance & Repairs',
-    desc: 'Reliable plumbing, electrical and general repair support.',
+    desc: 'Planned preventive and reactive maintenance covering plumbing, electrical and general building infrastructure across all property types.',
   },
   {
     img:  pestControlImg,
     icon: '🛡️',
     title: 'Pest Control',
-    desc: 'Safe pest prevention and treatment for healthy environments.',
+    desc: 'Integrated pest management combining targeted treatment and scheduled prevention to protect occupant health and property integrity.',
   },
   {
     img:  propertyCareImg,
     icon: '🏢',
     title: 'Property Care',
-    desc: 'Ongoing care for estates, rentals and institutional properties.',
+    desc: 'End-to-end upkeep for residential estates, institutional facilities and commercial rentals with documented service delivery.',
   },
 ]
 
@@ -140,7 +141,7 @@ function App() {
             <div className="hero-visual">
               <div className="hero-image-card">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                  src={heroImg}
                   alt="Professional facilities management team at work"
                   className="hero-img"
                 />
@@ -180,7 +181,10 @@ function App() {
                     <div className="svc-icon-badge" aria-hidden="true">{icon}</div>
                     <h3 className="svc-title">{title}</h3>
                     <p className="svc-desc">{desc}</p>
-                    <a href="#contact" className="svc-link">Learn more →</a>
+                    <a href="#contact" className="svc-link">
+                    Learn more
+                    <span className="svc-link-arrow" aria-hidden="true">→</span>
+                  </a>
                   </div>
                 </article>
               ))}
