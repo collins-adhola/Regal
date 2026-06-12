@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logoImg          from './assets/logo.png'
 import heroImg          from './assets/services/hero1.jpeg'
 import cleaningImg      from './assets/services/cleaning.jpeg'
 import maintenanceImg   from './assets/services/maintenance.jpeg'
@@ -64,8 +65,7 @@ function App() {
         <div className="container header-inner">
 
           <a href="#home" className="brand" onClick={closeMenu}>
-            <span className="brand-name">REGAL</span>
-            <span className="brand-sub">Facilities Management</span>
+            <img src={logoImg} alt="Regal Facilities Management" className="nav-logo" />
           </a>
 
           <nav
@@ -385,7 +385,83 @@ function App() {
         </section>
       </main>
 
-      <footer>Footer placeholder</footer>
+      <footer className="site-footer">
+        <div className="container">
+
+          <div className="footer-top">
+
+            {/* ── Brand column ── */}
+            <div className="ft-brand">
+              <div className="ft-brand-lockup">
+                <span className="ft-brand-name">REGAL</span>
+                <span className="ft-brand-sub">Facilities Management</span>
+              </div>
+              <p className="ft-brand-desc">
+                Professional facilities management services delivering
+                operational reliability, responsive support and measurable
+                service standards across Uganda.
+              </p>
+            </div>
+
+            {/* ── Quick Links ── */}
+            <div className="ft-col">
+              <h4 className="ft-col-heading">Quick Links</h4>
+              <ul className="ft-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-regal">Why Regal</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* ── Core Services ── */}
+            <div className="ft-col">
+              <h4 className="ft-col-heading">Core Services</h4>
+              <ul className="ft-links">
+                <li><a href="#services">Cleaning &amp; Hygiene</a></li>
+                <li><a href="#services">Maintenance &amp; Repairs</a></li>
+                <li><a href="#services">Pest Control</a></li>
+                <li><a href="#services">Property Care</a></li>
+              </ul>
+            </div>
+
+            {/* ── Contact ── */}
+            <div className="ft-col">
+              <h4 className="ft-col-heading">Contact</h4>
+              <div className="ft-contact-items">
+                <div className="ft-contact-item">
+                  <span className="ft-contact-label">Email</span>
+                  <a href="mailto:elvis@regalfacilities.com" className="ft-contact-value">
+                    elvis@regalfacilities.com
+                  </a>
+                </div>
+                <div className="ft-contact-item">
+                  <span className="ft-contact-label">Telephone</span>
+                  <a href="tel:077222120" className="ft-contact-value">077 222 120</a>
+                </div>
+                <div className="ft-contact-item">
+                  <span className="ft-contact-label">Availability</span>
+                  <span className="ft-contact-value">
+                    Mon – Sat &nbsp;·&nbsp; 7:00 AM – 7:00 PM
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* ── Bottom bar ── */}
+          <div className="footer-bottom">
+            <p className="ft-copyright">
+              &copy; 2026 Regal Facilities Management. All rights reserved.
+            </p>
+            <p className="ft-tagline">
+              Operational Excellence &nbsp;·&nbsp; Professional Standards &nbsp;·&nbsp; Responsive Support
+            </p>
+          </div>
+
+        </div>
+      </footer>
     </>
   )
 }
