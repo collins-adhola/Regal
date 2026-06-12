@@ -7,17 +7,20 @@ import pestControlImg   from './assets/services/pest-control.jpeg'
 import propertyCareImg  from './assets/services/property-care.jpeg'
 
 const NAV_LINKS = [
-  { label: 'Home',      href: '#home'      },
-  { label: 'Services',  href: '#services'  },
-  { label: 'Why Regal', href: '#why-regal' },
-  { label: 'Contact',   href: '#contact'   },
+  { label: 'Home',       href: '#home'       },
+  { label: 'Services',   href: '#services'   },
+  { label: 'Industries', href: '#industries' },
+  { label: 'Process',    href: '#process'    },
+  { label: 'Contact',    href: '#contact'    },
 ]
 
-const WHY_ITEMS = [
-  { icon: '✦', title: 'Single-Point Accountability' },
-  { icon: '✦', title: 'SLA Tracking & Reporting' },
-  { icon: '✦', title: 'HSE-Compliant Delivery' },
-  { icon: '✦', title: 'Cost-Efficient Model' },
+const INDUSTRIES = [
+  { title: 'Corporate Offices',      desc: 'Commercial workplaces and mixed-use business properties' },
+  { title: 'Residential Estates',    desc: 'Condominiums, gated communities and managed developments' },
+  { title: 'Hospitals & Clinics',    desc: 'Medical centres, clinics and healthcare facilities' },
+  { title: 'Schools & Universities', desc: 'Educational campuses and academic institutions' },
+  { title: 'Government Buildings',   desc: 'Public sector facilities and contractor-managed sites' },
+  { title: 'Retail & Mixed Use',     desc: 'Malls, industrial parks and commercial precincts' },
 ] as const
 
 const SERVICES = [
@@ -47,14 +50,6 @@ const SERVICES = [
   },
 ]
 
-const SECTORS = [
-  { title: 'Corporate Offices',      desc: 'Commercial workplaces and mixed-use business properties' },
-  { title: 'Residential Estates',    desc: 'Condominiums, gated communities and managed developments' },
-  { title: 'Hospitals & Clinics',    desc: 'Medical centres, clinics and healthcare facilities' },
-  { title: 'Schools & Universities', desc: 'Educational campuses, colleges and academic institutions' },
-  { title: 'Government Buildings',   desc: 'Public sector facilities and contractor-managed sites' },
-  { title: 'Retail & Mixed Use',     desc: 'Shopping malls, industrial parks and commercial precincts' },
-] as const
 
 const PROCESS_STEPS = [
   {
@@ -139,11 +134,6 @@ function App() {
 
             {/* ── Left: text content ── */}
             <div className="hero-content">
-              <div className="hero-brand">
-                <span className="hero-brand-name">REGAL</span>
-                <span className="hero-brand-sub">Facilities Management</span>
-              </div>
-
               <p className="hero-eyebrow">
                 Integrated Facility Management · Uganda
               </p>
@@ -231,65 +221,35 @@ function App() {
 
           </div>
         </section>
-        <section id="why-regal" className="why-regal">
-          <div className="container why-regal-inner">
+        {/* ── Industries ── */}
+        <section id="industries" className="industries">
+          <div className="container ind-inner">
 
-            {/* ── Left: text + trust items ── */}
-            <div className="wr-content">
-              <p className="section-eyebrow">Why Regal</p>
-              <h2 className="wr-heading">Why Choose Regal</h2>
-              <p className="wr-lead">
-                One accountable partner. Trained teams. Measurable standards.
-                Cost-focused delivery built for public and private sector clients.
+            {/* ── Left: credibility ── */}
+            <div className="ind-content">
+              <p className="section-eyebrow">Who We Serve</p>
+              <h2 className="ind-heading">Trusted Across Industries</h2>
+              <p className="ind-lead">
+                Regal provides structured facility management for organisations
+                that require reliable, compliant and professionally delivered
+                building services across Uganda.
               </p>
-
-              <div className="wr-trust-grid">
-                {WHY_ITEMS.map(({ icon, title }) => (
-                  <div key={title} className="wr-trust-item">
-                    <span className="wr-trust-icon" aria-hidden="true">{icon}</span>
-                    <span className="wr-trust-title">{title}</span>
-                  </div>
-                ))}
+              <div className="ind-creds">
+                <p className="ind-cred">Single contract. Single point of accountability.</p>
+                <p className="ind-cred">Measurable SLA delivery across every site.</p>
               </div>
             </div>
 
-            {/* ── Right: image with floating badges ── */}
-            <div className="wr-visual">
-              <div className="wr-image-card">
-                <img
-                  src={maintenanceImg}
-                  alt="Regal facilities management team on site"
-                  className="wr-img"
-                  loading="lazy"
-                />
-              </div>
-              <div className="wr-badge wr-badge--bottom">
-                <span className="wr-badge-num">500+</span>
-                <span className="wr-badge-label">Projects Supported</span>
-              </div>
-            </div>
-
-          </div>
-        </section>
-        {/* ── Sectors We Serve ── */}
-        <section id="sectors" className="sectors">
-          <div className="container">
-            <header className="section-header">
-              <p className="section-eyebrow">Where We Work</p>
-              <h2 className="section-heading">Sectors We Serve</h2>
-              <p className="section-lead">
-                Supporting the facilities that matter most — workplaces, campuses,
-                healthcare sites, estates and public assets across Uganda.
-              </p>
-            </header>
-            <div className="sectors-grid">
-              {SECTORS.map(({ title, desc }) => (
-                <div key={title} className="sector-card">
-                  <p className="sector-title">{title}</p>
-                  <p className="sector-desc">{desc}</p>
+            {/* ── Right: industry grid ── */}
+            <div className="ind-grid">
+              {INDUSTRIES.map(({ title, desc }) => (
+                <div key={title} className="ind-card">
+                  <p className="ind-card-title">{title}</p>
+                  <p className="ind-card-desc">{desc}</p>
                 </div>
               ))}
             </div>
+
           </div>
         </section>
 
@@ -342,8 +302,8 @@ function App() {
                   </div>
                   <div>
                     <p className="ct-card-label">Email</p>
-                    <a href="mailto:regalpropertysmc@gmail.com" className="ct-card-value">
-                      regalpropertysmc@gmail.com
+                    <a href="mailto:elvis@regalfacilities.com" className="ct-card-value">
+                      elvis@regalfacilities.com
                     </a>
                   </div>
                 </div>
@@ -486,7 +446,8 @@ function App() {
               <ul className="ft-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#why-regal">Why Regal</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#process">Process</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -508,8 +469,8 @@ function App() {
               <div className="ft-contact-items">
                 <div className="ft-contact-item">
                   <span className="ft-contact-label">Email</span>
-                  <a href="mailto:regalpropertysmc@gmail.com" className="ft-contact-value">
-                    regalpropertysmc@gmail.com
+                  <a href="mailto:elvis@regalfacilities.com" className="ft-contact-value">
+                    elvis@regalfacilities.com
                   </a>
                 </div>
                 <div className="ft-contact-item">
