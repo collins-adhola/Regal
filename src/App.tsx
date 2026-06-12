@@ -1,10 +1,41 @@
 import { useState, useEffect } from 'react'
+import cleaningImg      from './assets/services/cleaning.svg'
+import maintenanceImg   from './assets/services/maintenance.svg'
+import pestControlImg   from './assets/services/pest-control.svg'
+import propertyCareImg  from './assets/services/property-care.svg'
 
 const NAV_LINKS = [
   { label: 'Home',      href: '#home'      },
   { label: 'Services',  href: '#services'  },
   { label: 'Why Regal', href: '#why-regal' },
   { label: 'Contact',   href: '#contact'   },
+]
+
+const SERVICES = [
+  {
+    img:  cleaningImg,
+    icon: '🧹',
+    title: 'Cleaning & Hygiene',
+    desc: 'Professional cleaning for homes, offices, schools and clinics.',
+  },
+  {
+    img:  maintenanceImg,
+    icon: '⚙️',
+    title: 'Maintenance & Repairs',
+    desc: 'Reliable plumbing, electrical and general repair support.',
+  },
+  {
+    img:  pestControlImg,
+    icon: '🛡️',
+    title: 'Pest Control',
+    desc: 'Safe pest prevention and treatment for healthy environments.',
+  },
+  {
+    img:  propertyCareImg,
+    icon: '🏢',
+    title: 'Property Care',
+    desc: 'Ongoing care for estates, rentals and institutional properties.',
+  },
 ]
 
 function App() {
@@ -68,6 +99,11 @@ function App() {
 
             {/* ── Left: text content ── */}
             <div className="hero-content">
+              <div className="hero-brand">
+                <span className="hero-brand-name">REGAL</span>
+                <span className="hero-brand-sub">Facilities Management</span>
+              </div>
+
               <p className="hero-eyebrow">
                 Uganda's Trusted Facilities Management Partner
               </p>
@@ -117,7 +153,41 @@ function App() {
 
           </div>
         </section>
-        <section id="services">Services placeholder</section>
+        <section id="services" className="services">
+          <div className="container">
+
+            <header className="section-header">
+              <p className="section-eyebrow">What We Offer</p>
+              <h2 className="section-heading">Core Facilities Services</h2>
+              <p className="section-lead">
+                Essential property support delivered with professional standards
+                and clear reporting.
+              </p>
+            </header>
+
+            <div className="svc-grid">
+              {SERVICES.map(({ img, icon, title, desc }) => (
+                <article key={title} className="svc-card">
+                  <div className="svc-thumb">
+                    <img
+                      src={img}
+                      alt={title}
+                      className="svc-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="svc-body">
+                    <div className="svc-icon-badge" aria-hidden="true">{icon}</div>
+                    <h3 className="svc-title">{title}</h3>
+                    <p className="svc-desc">{desc}</p>
+                    <a href="#contact" className="svc-link">Learn more →</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+          </div>
+        </section>
         <section id="why-regal">Why Regal placeholder</section>
         <section id="contact">Contact placeholder</section>
       </main>

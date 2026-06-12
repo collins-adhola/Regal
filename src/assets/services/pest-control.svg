@@ -1,0 +1,24 @@
+<svg viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E4EFE2"/>
+      <stop offset="100%" stop-color="#B8D4B4"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <!-- Background leaf shapes -->
+  <ellipse cx="100" cy="360" rx="90" ry="35" transform="rotate(-35 100 360)"
+           fill="white" fill-opacity="0.07"/>
+  <ellipse cx="510" cy="60"  rx="90" ry="35" transform="rotate(-35 510 60)"
+           fill="white" fill-opacity="0.07"/>
+  <!-- Shield outer -->
+  <path d="M300 70 L430 138 L430 252 Q430 340 300 380 Q170 340 170 252 L170 138 Z"
+        fill="white" fill-opacity="0.1" stroke="white" stroke-width="1.5" stroke-opacity="0.25"/>
+  <!-- Shield inner -->
+  <path d="M300 108 L398 162 L398 252 Q398 322 300 354 Q202 322 202 252 L202 162 Z"
+        fill="white" fill-opacity="0.07" stroke="white" stroke-width="1" stroke-opacity="0.18"/>
+  <!-- Checkmark inside shield -->
+  <path d="M252 228 L286 262 L355 182"
+        fill="none" stroke="white" stroke-width="4" stroke-opacity="0.28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

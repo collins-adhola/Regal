@@ -1,0 +1,29 @@
+<svg viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E8EAEE"/>
+      <stop offset="100%" stop-color="#C8CBD8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <!-- Structural grid lines -->
+  <line x1="0"   y1="133" x2="600" y2="133" stroke="white" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="0"   y1="267" x2="600" y2="267" stroke="white" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="150" y1="0"   x2="150" y2="400" stroke="white" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="300" y1="0"   x2="300" y2="400" stroke="white" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="450" y1="0"   x2="450" y2="400" stroke="white" stroke-width="1" stroke-opacity="0.35"/>
+  <!-- Central gear shape — two concentric rings + spokes -->
+  <circle cx="300" cy="200" r="90"  fill="white" fill-opacity="0.08"/>
+  <circle cx="300" cy="200" r="90"  fill="none"  stroke="white" stroke-width="2" stroke-opacity="0.2"/>
+  <circle cx="300" cy="200" r="48"  fill="white" fill-opacity="0.1"/>
+  <circle cx="300" cy="200" r="48"  fill="none"  stroke="white" stroke-width="1.5" stroke-opacity="0.2"/>
+  <!-- Spokes -->
+  <line x1="300" y1="110" x2="300" y2="152" stroke="white" stroke-width="2.5" stroke-opacity="0.22"/>
+  <line x1="300" y1="248" x2="300" y2="290" stroke="white" stroke-width="2.5" stroke-opacity="0.22"/>
+  <line x1="210" y1="200" x2="252" y2="200" stroke="white" stroke-width="2.5" stroke-opacity="0.22"/>
+  <line x1="348" y1="200" x2="390" y2="200" stroke="white" stroke-width="2.5" stroke-opacity="0.22"/>
+  <line x1="236" y1="136" x2="264" y2="165" stroke="white" stroke-width="2.5" stroke-opacity="0.18"/>
+  <line x1="336" y1="235" x2="364" y2="264" stroke="white" stroke-width="2.5" stroke-opacity="0.18"/>
+  <line x1="364" y1="136" x2="336" y2="165" stroke="white" stroke-width="2.5" stroke-opacity="0.18"/>
+  <line x1="264" y1="235" x2="236" y2="264" stroke="white" stroke-width="2.5" stroke-opacity="0.18"/>
+</svg>
