@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import logoImg          from './assets/logo.png'
-import heroImg          from './assets/services/hero1.jpeg'
+import kampalaImg       from './assets/services/kampala_skyline.jpeg'
 import cleaningImg      from './assets/services/cleaning.jpeg'
 import maintenanceImg   from './assets/services/maintenance.jpeg'
 import pestControlImg   from './assets/services/pest-control.jpeg'
@@ -129,58 +129,90 @@ function App() {
       </header>
 
       <main>
-        <section id="home" className="hero">
-          <div className="container hero-inner">
+        {/* ── Hero ── */}
+        <section
+          id="home"
+          className="hero"
+          style={{
+            backgroundImage: `linear-gradient(
+              90deg,
+              rgba(5,18,32,0.97) 0%,
+              rgba(7,28,48,0.93) 32%,
+              rgba(10,42,68,0.60) 65%,
+              rgba(10,42,68,0.12) 100%
+            ), url(${kampalaImg})`
+          }}
+        >
+          {/* Atmospheric depth glow */}
+          <div className="hero-atmosphere" aria-hidden="true" />
 
-            {/* ── Left: text content ── */}
+          {/* Uganda-inspired flowing ribbon */}
+          <div className="hero-ribbon" aria-hidden="true">
+            <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0,220 L0,120 Q720,60 1440,0 L1440,45 Q720,105 0,165 Z" fill="#0D0D0D" opacity="0.9" />
+              <path d="M0,165 Q720,105 1440,45 L1440,78 Q720,138 0,198 Z" fill="#FCD205" opacity="0.92" />
+              <path d="M0,198 Q720,138 1440,78 L1440,110 Q720,170 0,230 Z" fill="#CC0000" opacity="0.88" />
+            </svg>
+          </div>
+
+          <div className="container">
             <div className="hero-content">
+
+              {/* Brand signature */}
+              <div className="hero-brand">
+                <span className="hero-brand-name">Regal</span>
+                <span className="hero-brand-sub">Facilities Management</span>
+              </div>
+
               <p className="hero-eyebrow">
                 Integrated Facility Management · Uganda
               </p>
 
               <h1 className="hero-heading">
-                We Manage Your Facilities.<br />
-                You Focus on Growth.
+                Building Better Environments.<br />
+                <span className="hero-heading-accent">Powering Uganda's Progress.</span>
               </h1>
 
               <p className="hero-body">
-                Regal delivers disciplined facility services for corporate offices,
-                institutions and residential estates across Uganda — keeping your
-                buildings compliant, safe and fully operational.
+                Integrated facility management that keeps your operations
+                running, your people safe, and your assets performing.
               </p>
 
-              <ul className="hero-features">
-                <li>Single-Point Accountability</li>
-                <li>Enterprise SLA Reporting</li>
-                <li>HSE-Compliant Delivery</li>
-                <li>Rapid Response Teams</li>
-              </ul>
+              <div className="hero-trust-pills">
+                <div className="hero-trust-pill">
+                  <span className="hero-pill-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  </span>
+                  Corporate &amp; Institutional Facilities Support
+                </div>
+                <div className="hero-trust-pill">
+                  <span className="hero-pill-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                  </span>
+                  Planned Maintenance &amp; Operational Delivery
+                </div>
+              </div>
 
               <div className="hero-actions">
-                <a href="#contact" className="btn btn-primary">Request a Site Assessment</a>
-                <a href="#services" className="btn btn-outline">View Services</a>
+                <a href="#contact" className="btn btn-primary">
+                  Request a Site Assessment →
+                </a>
+                <a href="#services" className="btn btn-outline">
+                  Explore Our Services
+                </a>
               </div>
 
               <p className="hero-trust">
-                Trusted by schools, clinics, residential estates and government contractors across Uganda.
+                Trusted by schools, clinics, estates and commercial facilities{' '}
+                <a href="#industries" className="hero-trust-link">across Uganda.</a>
               </p>
-            </div>
 
-            {/* ── Right: image card ── */}
-            <div className="hero-visual">
-              <div className="hero-image-card">
-                <img
-                  src={heroImg}
-                  alt="Professional facilities management team at work"
-                  className="hero-img"
-                />
-              </div>
-              <div className="hero-badge">
-                <span className="hero-badge-num">500+</span>
-                <span className="hero-badge-label">Projects Supported</span>
-              </div>
             </div>
-
           </div>
         </section>
         <section id="services" className="services">
