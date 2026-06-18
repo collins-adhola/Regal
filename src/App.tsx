@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'Services',   href: '#services'   },
   { label: 'Industries', href: '#industries' },
   { label: 'Process',    href: '#process'    },
+  { label: 'About Us',   href: '#about'      },
   { label: 'Contact',    href: '#contact'    },
 ]
 
@@ -140,67 +141,98 @@ function App() {
               <span className="hero-brand-sub">Facilities Management</span>
             </div>
 
-            <p className="hero-eyebrow">
-              Integrated Facility Management · Uganda
-            </p>
+            <p className="hero-eyebrow">Uganda's Premier Facilities Partner</p>
 
             <h1 className="hero-heading">
-              Building Better Environments.<br />
-              <span className="hero-heading-accent">Powering Uganda's Progress.</span>
+              Your Buildings.<br />
+              <span className="hero-heading-accent">Our Responsibility.</span>
             </h1>
 
             <p className="hero-body">
-              Integrated facility management that keeps your operations
-              running, your people safe, and your assets performing.
+              Professional cleaning, maintenance, pest control and facilities support
+              for businesses, schools and residential estates across Uganda.
             </p>
 
-            <div className="hero-trust-pills">
-              <div className="hero-trust-pill">
-                <span className="hero-pill-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <ul className="hero-trust-list">
+              <li>Trained &amp; Vetted Teams</li>
+              <li>HSE-Compliant Operations</li>
+              <li>SLA-Based Reporting</li>
+              <li>Rapid Response Support</li>
+            </ul>
+
+            <div className="hero-actions">
+              <a href="#contact" className="btn btn-primary">
+                Request a Site Assessment
+              </a>
+              <a href="#services" className="btn btn-outline-navy">
+                View Services
+              </a>
+            </div>
+
+            <p className="hero-locale">Serving businesses across Uganda</p>
+
+          </div>
+
+          {/* RIGHT — floating image with service cards */}
+          <div className="hero-right">
+            <div className="hero-image-wrap">
+
+              <img
+                src={kampalaImg}
+                alt="Regal facilities professional at work"
+                className="hero-image"
+              />
+
+              <div className="hfc hfc--tl">
+                <span className="hfc-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="hfc-title">Cleaning &amp; Hygiene</p>
+                  <p className="hfc-sub">Offices · Schools · Estates</p>
+                </div>
+              </div>
+
+              <div className="hfc hfc--tr">
+                <span className="hfc-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="hfc-title">Maintenance</p>
+                  <p className="hfc-sub">Planned &amp; Reactive</p>
+                </div>
+              </div>
+
+              <div className="hfc hfc--bl">
+                <span className="hfc-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="hfc-title">Pest Control</p>
+                  <p className="hfc-sub">Prevention &amp; Treatment</p>
+                </div>
+              </div>
+
+              <div className="hfc hfc--br">
+                <span className="hfc-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                     <polyline points="9 22 9 12 15 12 15 22"/>
                   </svg>
                 </span>
-                Corporate &amp; Institutional Facilities Support
+                <div>
+                  <p className="hfc-title">Property Care</p>
+                  <p className="hfc-sub">Grounds &amp; Upkeep</p>
+                </div>
               </div>
-              <div className="hero-trust-pill">
-                <span className="hero-pill-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                </span>
-                Planned Maintenance &amp; Operational Delivery
-              </div>
+
             </div>
-
-            <div className="hero-actions">
-              <a href="#contact" className="btn btn-primary">
-                Request a Site Assessment →
-              </a>
-              <a href="#services" className="btn btn-outline">
-                Explore Our Services
-              </a>
-            </div>
-
-            <p className="hero-trust">
-              Trusted by schools, clinics, estates and commercial facilities{' '}
-              <a href="#industries" className="hero-trust-link">across Uganda.</a>
-            </p>
-
-            {/* Uganda identity — thin accent stripe */}
-            <div className="hero-uganda-accent" aria-hidden="true">
-              <span /><span /><span />
-            </div>
-          </div>
-
-          {/* RIGHT — sharp, edge-to-edge Kampala skyline */}
-          <div className="hero-right" aria-hidden="true">
-            <img
-              src={kampalaImg}
-              alt="Kampala skyline"
-              className="hero-image"
-            />
           </div>
 
         </section>
@@ -209,7 +241,7 @@ function App() {
 
             <header className="section-header">
               <p className="section-eyebrow">What We Deliver</p>
-              <h2 className="section-heading">Core Facilities Services</h2>
+              <h2 className="section-heading">Our Services</h2>
               <p className="section-lead">
                 Technical maintenance and workspace care combined into one streamlined
                 programme that preserves asset value and improves daily performance.
@@ -244,24 +276,18 @@ function App() {
         </section>
         {/* ── Industries ── */}
         <section id="industries" className="industries">
-          <div className="container ind-inner">
+          <div className="container">
 
-            {/* ── Left: credibility ── */}
-            <div className="ind-content">
+            <header className="section-header">
               <p className="section-eyebrow">Who We Serve</p>
-              <h2 className="ind-heading">Trusted Across Industries</h2>
-              <p className="ind-lead">
+              <h2 className="section-heading">Industries We Support</h2>
+              <p className="section-lead">
                 Regal provides structured facility management for organisations
                 that require reliable, compliant and professionally delivered
                 building services across Uganda.
               </p>
-              <div className="ind-creds">
-                <p className="ind-cred">Single contract. Single point of accountability.</p>
-                <p className="ind-cred">Measurable SLA delivery across every site.</p>
-              </div>
-            </div>
+            </header>
 
-            {/* ── Right: industry grid ── */}
             <div className="ind-grid">
               {INDUSTRIES.map(({ title, desc }) => (
                 <div key={title} className="ind-card">
