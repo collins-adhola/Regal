@@ -15,14 +15,67 @@ const NAV_LINKS = [
   { label: 'Contact',    href: '#contact'    },
 ]
 
-const INDUSTRIES = [
-  { title: 'Corporate Offices',      desc: 'Commercial workplaces and mixed-use business properties' },
-  { title: 'Residential Estates',    desc: 'Condominiums, gated communities and managed developments' },
-  { title: 'Hospitals & Clinics',    desc: 'Medical centres, clinics and healthcare facilities' },
-  { title: 'Schools & Universities', desc: 'Educational campuses and academic institutions' },
-  { title: 'Government Buildings',   desc: 'Public sector facilities and contractor-managed sites' },
-  { title: 'Retail & Mixed Use',     desc: 'Malls, industrial parks and commercial precincts' },
-] as const
+const INDUSTRY_NODES = [
+  {
+    title: 'Hospitals & Clinics',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="3" stroke="#D4A62A" strokeWidth="1.5"/>
+        <path d="M12 8v8M8 12h8" stroke="#D4A62A" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Schools & Universities',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M22 9L12 4 2 9l10 5 10-5z" fill="#D4A62A" fillOpacity="0.15" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5" stroke="#D4A62A" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Retail & Mixed Use',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+        <line x1="3" y1="6" x2="21" y2="6" stroke="#D4A62A" strokeWidth="1.5"/>
+        <path d="M16 10a4 4 0 01-8 0" stroke="#D4A62A" strokeWidth="1.5"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Government Buildings',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M3 21h18M12 3L2 9h20L12 3z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+        <line x1="5"    y1="9" x2="5"    y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
+        <line x1="9.5"  y1="9" x2="9.5"  y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
+        <line x1="14.5" y1="9" x2="14.5" y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
+        <line x1="19"   y1="9" x2="19"   y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Corporate Offices',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <rect x="3" y="2" width="18" height="20" rx="1" stroke="#D4A62A" strokeWidth="1.5"/>
+        <path d="M7 6h2m4 0h2M7 10h2m4 0h2" stroke="#D4A62A" strokeWidth="1.3" strokeLinecap="round"/>
+        <path d="M9 22v-5h6v5" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Residential Estates',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M3 9.5L12 3l9 6.5V21H3V9.5z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M9 21v-7h6v7" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+]
 
 const SERVICES = [
   {
@@ -322,19 +375,59 @@ function App() {
               <p className="section-eyebrow">Who We Serve</p>
               <h2 className="section-heading">Industries We Support</h2>
               <p className="section-lead">
-                Regal provides structured facility management for organisations
-                that require reliable, compliant and professionally delivered
-                building services across Uganda.
+                Regal supports the facilities that keep Uganda's workplaces,
+                schools, healthcare environments, estates and public spaces running.
               </p>
             </header>
 
-            <div className="ind-grid">
-              {INDUSTRIES.map(({ title, desc }) => (
-                <div key={title} className="ind-card">
-                  <p className="ind-card-title">{title}</p>
-                  <p className="ind-card-desc">{desc}</p>
+            {/* Desktop: radial network diagram */}
+            <div className="ind-network" role="img" aria-label="Network diagram: six industry sectors connected to Regal at the centre">
+
+              {/* Gold connector lines — trimmed to circle edges, arrows point toward REGAL */}
+              <svg className="ind-connectors" viewBox="0 0 680 520" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <marker id="ind-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                    <path d="M0,0.5 L0,6.5 L6,3.5 Z" fill="#D4A62A" fillOpacity="0.6"/>
+                  </marker>
+                </defs>
+                {/* Each line: outer node edge → REGAL circle edge */}
+                <line x1="340" y1="113" x2="340" y2="195" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="467" y1="187" x2="396" y2="228" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="467" y1="333" x2="396" y2="292" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="340" y1="407" x2="340" y2="325" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="213" y1="333" x2="284" y2="292" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="213" y1="187" x2="284" y2="228" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+              </svg>
+
+              {/* Centre REGAL hub */}
+              <div className="ind-hub">
+                <span className="ind-hub-name">REGAL</span>
+                <span className="ind-hub-sub">Facilities<br/>Management</span>
+              </div>
+
+              {/* Six industry nodes — clockwise from 12 o'clock */}
+              {INDUSTRY_NODES.map((node, i) => (
+                <div key={node.title} className={`ind-node ind-node--${i + 1}`}>
+                  <span className="ind-node-icon">{node.icon}</span>
+                  <span className="ind-node-label">{node.title}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile: stacked hub + 2-col grid */}
+            <div className="ind-mobile">
+              <div className="ind-hub-mobile">
+                <span className="ind-hub-mobile-name">REGAL</span>
+                <span className="ind-hub-mobile-sub">Facilities Management</span>
+              </div>
+              <div className="ind-mobile-grid">
+                {INDUSTRY_NODES.map((node) => (
+                  <div key={node.title} className="ind-mobile-item">
+                    <span className="ind-mobile-icon">{node.icon}</span>
+                    <span className="ind-mobile-label">{node.title}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>

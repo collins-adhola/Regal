@@ -1012,69 +1012,199 @@ section {
   }
 }
 
-/* ─── Industries ───────────────────────────────────────────── */
+/* ─── Industries — Network Diagram ────────────────────────── */
 .industries {
   background-color: var(--white);
   padding-block: 5rem;
 }
 
-/* Industry cards — 3-col grid */
-.ind-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+/* ── Desktop radial network ── */
+.ind-network {
+  position: relative;
+  max-width: 680px;
+  aspect-ratio: 680 / 520;
+  margin: 0 auto;
 }
 
-.ind-card {
-  background: var(--light-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.75rem 1.625rem;
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
+.ind-connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.ind-card:hover {
-  border-color: rgba(212, 166, 42, 0.4);
-  box-shadow: 0 6px 20px rgba(15, 41, 66, 0.08);
-  transform: translateY(-3px);
+/* Centre REGAL hub */
+.ind-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #0F2942;
+  border: 2.5px solid #D4A62A;
+  box-shadow:
+    0 0 0 8px rgba(212, 166, 42, 0.10),
+    0 12px 40px rgba(15, 41, 66, 0.30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  z-index: 3;
+  text-align: center;
+  padding: 0.75rem;
 }
 
-.ind-card-title {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.375rem;
+.ind-hub-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #D4A62A;
+  letter-spacing: 0.18em;
+  line-height: 1;
 }
 
-.ind-card-desc {
-  font-size: 0.8125rem;
-  color: var(--muted);
-  line-height: 1.6;
+.ind-hub-sub {
+  font-size: 0.48rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 
-/* ─── Industries — Responsive ─────────────────────────────── */
+/* Outer industry nodes */
+.ind-node {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: #F8FAFC;
+  border: 2px solid rgba(212, 166, 42, 0.38);
+  box-shadow: 0 4px 18px rgba(15, 41, 66, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: default;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.ind-node:hover {
+  transform: translate(-50%, calc(-50% - 5px));
+  box-shadow: 0 10px 28px rgba(15, 41, 66, 0.14);
+  border-color: rgba(212, 166, 42, 0.80);
+}
+
+.ind-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ind-node-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #0F2942;
+  line-height: 1.25;
+}
+
+/* Clockwise from 12 o'clock */
+.ind-node--1 { left: 50%;    top: 12.5%;  } /* Hospitals */
+.ind-node--2 { left: 74.85%; top: 31.35%; } /* Schools */
+.ind-node--3 { left: 74.85%; top: 68.65%; } /* Retail */
+.ind-node--4 { left: 50%;    top: 87.5%;  } /* Government */
+.ind-node--5 { left: 25.15%; top: 68.65%; } /* Corporate */
+.ind-node--6 { left: 25.15%; top: 31.35%; } /* Residential */
+
+/* ── Mobile: hide network, show 2-col grid ── */
+.ind-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .ind-network { display: none; }
+  .ind-mobile  { display: block; }
+
+  .ind-hub-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #0F2942;
+    border: 2px solid #D4A62A;
+    box-shadow: 0 8px 28px rgba(15, 41, 66, 0.25);
+    margin: 0 auto 1.75rem;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .ind-hub-mobile-name {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #D4A62A;
+    letter-spacing: 0.15em;
+    line-height: 1;
+  }
+
+  .ind-hub-mobile-sub {
+    font-size: 0.44rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    margin-top: 0.2rem;
+  }
+
+  .ind-mobile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+  }
+
+  .ind-mobile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: #F8FAFC;
+    border: 1.5px solid rgba(212, 166, 42, 0.35);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 0.75rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(15, 41, 66, 0.06);
+  }
+
+  .ind-mobile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ind-mobile-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0F2942;
+    line-height: 1.3;
+  }
+}
+
+/* ─── Industries — Responsive padding ─────────────────────── */
 @media (max-width: 960px) {
-  .industries {
-    padding-block: 4rem;
-  }
-
-  .ind-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .industries { padding-block: 4rem; }
 }
-
 @media (max-width: 600px) {
-  .industries {
-    padding-block: 3.5rem;
-  }
-
-  .ind-grid {
-    grid-template-columns: 1fr;
-  }
+  .industries { padding-block: 3.5rem; }
 }
 
 /* ─── Contact ──────────────────────────────────────────────── */
