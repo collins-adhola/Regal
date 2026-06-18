@@ -311,9 +311,10 @@ section {
 /* ── Hero shell ── */
 .hero {
   display: grid;
-  grid-template-columns: 1fr 0.88fr;
-  min-height: 76vh;
-  min-height: 76dvh;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 68vh;
+  min-height: 68dvh;
+  max-height: 760px;
   overflow: hidden;
   padding-block: 0;
   background: var(--white);
@@ -498,55 +499,45 @@ section {
   letter-spacing: 0.015em;
 }
 
-/* ── Right panel — floating image with whitespace ── */
+/* ── Right panel — image bleeds to edges, whitespace gap on left only ── */
 .hero-right {
   position: relative;
   z-index: 1;
-  padding: 2.75rem 3rem 2.75rem 0.5rem;
+  padding: 0 0 0 2rem;
   display: flex;
   align-items: stretch;
 }
 
-/* ── Image wrapper — rounded, elevated, with depth layers ── */
+/* ── Image wrapper — no card shape, blends into composition ── */
 .hero-image-wrap {
   position: relative;
   width: 100%;
-  border-radius: 28px;
   overflow: hidden;
-  /* Multi-layer shadow for genuine depth */
-  box-shadow:
-    0 2px 4px   rgba(15, 41, 66, 0.06),
-    0 8px 20px  rgba(15, 41, 66, 0.10),
-    0 24px 56px rgba(15, 41, 66, 0.16),
-    0 48px 96px rgba(15, 41, 66, 0.10);
-  /* Subtle gold ring */
-  outline: 1px solid rgba(212, 166, 42, 0.15);
-  outline-offset: -1px;
 }
 
-/* Left-to-right gradient bridge: white → transparent, creates optical merge with left panel */
+/* Strong left-fade: blends image edge seamlessly into white left panel */
 .hero-image-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    105deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0.04) 28%,
-    transparent 45%
+    to right,
+    rgba(248, 250, 252, 0.92) 0%,
+    rgba(248, 250, 252, 0.38) 22%,
+    transparent 48%
   );
   z-index: 2;
   pointer-events: none;
 }
 
-/* Vignette: darkens edges to pull the eye to centre, adds depth */
+/* User-specified overlay + subtle bottom vignette */
 .hero-image-wrap::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 45%, transparent 48%, rgba(15, 41, 66, 0.22) 100%),
-    linear-gradient(to bottom, rgba(15, 41, 66, 0.04) 0%, transparent 30%, transparent 65%, rgba(15, 41, 66, 0.18) 100%);
+    linear-gradient(90deg, rgba(248,250,252,0) 0%, rgba(248,250,252,.10) 30%, rgba(15,41,66,.08) 100%),
+    linear-gradient(to bottom, transparent 60%, rgba(15,41,66,0.10) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -624,13 +615,9 @@ section {
   }
 
   .hero-right {
-    padding: 0 1.5rem 0;
-    height: 360px;
+    padding: 0;
+    height: 340px;
     order: -1;
-  }
-
-  .hero-image-wrap {
-    border-radius: 20px;
   }
 
   .hero-left {
@@ -658,12 +645,8 @@ section {
 
 @media (max-width: 480px) {
   .hero-right {
-    padding: 0 1rem 0;
-    height: 260px;
-  }
-
-  .hero-image-wrap {
-    border-radius: 14px;
+    padding: 0;
+    height: 240px;
   }
 
   .hero-left {
@@ -734,202 +717,186 @@ section {
   line-height: 1.75;
 }
 
-/* ─── Services section ────────────────────────────────────── */
+/* ─── Services — Tab Showcase ─────────────────────────────── */
 .services {
-  background-color: var(--light-bg);
-  padding-block: 5rem 3.5rem;
+  background: var(--white);
+  padding-block: 5rem;
 }
 
 .services .section-header {
-  margin-bottom: 3rem;
+  text-align: left;
+  margin-inline: 0;
+  margin-bottom: 2.25rem;
 }
 
-.svc-grid {
+.services .section-eyebrow::after {
+  display: none;
+}
+
+/* Tab navigation */
+.svc-tabs {
+  display: flex;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 3.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.svc-tabs::-webkit-scrollbar { display: none; }
+
+.svc-tab {
+  padding: 0.875rem 1.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.svc-tab:hover { color: var(--navy); }
+
+.svc-tab--active {
+  color: var(--navy);
+  border-bottom-color: var(--gold);
+}
+
+/* Showcase enter animation */
+@keyframes svc-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Two-column layout */
+.svc-showcase {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: center;
+  animation: svc-reveal 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ─── Service card ────────────────────────────────────────── */
-.svc-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+/* Left: text block */
+.svc-showcase-title {
+  font-size: clamp(1.875rem, 3vw, 2.625rem);
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1.125rem;
+}
+
+.svc-showcase-desc {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  max-width: 32rem;
+}
+
+/* Gold-dot benefit checklist */
+.svc-showcase-benefits {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease,
-    border-color 0.3s ease;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
 }
 
-.svc-card:hover {
-  box-shadow:
-    0 4px 8px  rgba(15, 42, 68, 0.06),
-    0 18px 44px rgba(15, 42, 68, 0.15);
-  transform: translateY(-5px);
-  border-color: rgba(15, 42, 68, 0.13);
+.svc-showcase-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--navy);
 }
 
-/* Image area */
-.svc-thumb {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+.svc-showcase-benefits li::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
   flex-shrink: 0;
 }
 
-/* Bottom gradient — adds depth and grounds the badge */
-.svc-thumb::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 48%,
-    rgba(15, 42, 68, 0.28) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+/* Right: image panel */
+.svc-showcase-visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow:
+    0 4px 8px   rgba(15, 41, 66, 0.06),
+    0 16px 40px rgba(15, 41, 66, 0.12);
 }
 
-.svc-img {
+.svc-showcase-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.5s ease;
+  filter: contrast(1.04) saturate(1.06);
+  transition: transform 0.6s ease;
 }
 
-.svc-card:hover .svc-img {
-  transform: scale(1.06);
+.svc-showcase-visual:hover .svc-showcase-img {
+  transform: scale(1.03);
 }
 
-/* Card body */
-.svc-body {
-  padding: 0 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-/* Icon badge — negative top margin overlaps the image bottom */
-.svc-icon-badge {
-  width: 44px;
-  height: 44px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.125rem;
-  box-shadow: 0 2px 10px rgba(15, 42, 68, 0.12);
-  margin-top: -22px;
-  margin-bottom: 1.125rem;
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-}
-
-.svc-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-  margin-bottom: 0.625rem;
-}
-
-.svc-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.7;
-  flex: 1;
-}
-
-/* "Learn more" link with sliding underline + arrow nudge */
-.svc-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 1.375rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: 0.01em;
-  position: relative;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-.svc-link::after {
+/* Gold accent strip at bottom of image */
+.svc-showcase-visual::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--gold-dark);
-  transition: width 0.28s ease;
-}
-
-.svc-link:hover {
-  color: var(--gold-dark);
-}
-
-.svc-link:hover::after {
-  width: 100%;
-}
-
-.svc-link-arrow {
-  display: inline-block;
-  transition: transform 0.25s ease;
-}
-
-.svc-link:hover .svc-link-arrow {
-  transform: translateX(4px);
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold), transparent 60%);
+  z-index: 1;
 }
 
 /* ─── Services — Responsive ───────────────────────────────── */
 @media (max-width: 960px) {
   .services {
-    padding-block: 4rem 3rem;
+    padding-block: 4rem;
   }
 
-  .svc-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+  .svc-showcase {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
-  .section-header {
-    margin-bottom: 3.5rem;
-  }
-
-  .services .section-header {
-    margin-bottom: 2.5rem;
+  .svc-showcase-visual {
+    aspect-ratio: 16 / 9;
   }
 }
 
 @media (max-width: 600px) {
   .services {
-    padding-block: 3.5rem 2.5rem;
+    padding-block: 3.5rem;
   }
 
-  .svc-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .svc-tab {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
   }
 
-  .section-header {
-    text-align: left;
-    margin-bottom: 2.75rem;
-  }
-
-  .section-eyebrow::before {
-    display: none;
+  .svc-showcase-visual {
+    aspect-ratio: 4 / 3;
   }
 }
 

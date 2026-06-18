@@ -26,28 +26,52 @@ const INDUSTRIES = [
 
 const SERVICES = [
   {
-    img:  cleaningImg,
-    icon: '🧹',
-    title: 'Cleaning & Hygiene',
-    desc: 'Structured cleaning and hygiene programmes for offices, schools and commercial sites, with documented quality controls and integrated waste management.',
+    img:      cleaningImg,
+    tab:      'Cleaning & Hygiene',
+    title:    'Cleaning & Hygiene',
+    desc:     'Professional cleaning programmes for offices, schools, healthcare environments and residential estates — delivered with documented quality controls and HSE-compliant procedures.',
+    benefits: [
+      'Quality Assurance Protocols',
+      'Trained & Vetted Teams',
+      'HSE-Compliant Operations',
+      'Scheduled Service Reporting',
+    ],
   },
   {
-    img:  maintenanceImg,
-    icon: '⚙️',
-    title: 'Maintenance & Repairs',
-    desc: 'Preventive and reactive maintenance for electrical, plumbing, HVAC and building fabric — keeping assets operational and reducing lifecycle costs.',
+    img:      maintenanceImg,
+    tab:      'Maintenance',
+    title:    'Maintenance & Repairs',
+    desc:     'Preventive and reactive maintenance for electrical, plumbing, HVAC and building fabric — keeping your assets operational and lifecycle costs controlled.',
+    benefits: [
+      'Planned Preventive Maintenance',
+      'Rapid Response Callouts',
+      'Asset Lifecycle Management',
+      'Documented Work Records',
+    ],
   },
   {
-    img:  pestControlImg,
-    icon: '🛡️',
-    title: 'Pest Control',
-    desc: 'Integrated pest management combining scheduled prevention and targeted treatment to protect occupant health and maintain regulatory compliance.',
+    img:      pestControlImg,
+    tab:      'Pest Control',
+    title:    'Pest Control',
+    desc:     'Integrated pest management combining scheduled prevention and targeted treatment to protect occupant health and maintain full regulatory compliance.',
+    benefits: [
+      'Integrated Prevention Plans',
+      'Licensed Technicians',
+      'Regulatory Compliance',
+      'Detailed Treatment Reports',
+    ],
   },
   {
-    img:  propertyCareImg,
-    icon: '🏢',
-    title: 'Property Care',
-    desc: 'Grounds and property upkeep for estates, institutional facilities and commercial sites with condition reporting and documented service delivery.',
+    img:      propertyCareImg,
+    tab:      'Property Care',
+    title:    'Property Care',
+    desc:     'Grounds and property upkeep for estates, institutional facilities and commercial sites — with structured condition reporting and planned service delivery.',
+    benefits: [
+      'Grounds & Landscape Management',
+      'Condition Monitoring',
+      'Planned Maintenance Schedules',
+      'Single Point of Contact',
+    ],
   },
 ]
 
@@ -78,6 +102,7 @@ const PROCESS_STEPS = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeService, setActiveService] = useState(0)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -149,8 +174,8 @@ function App() {
             </h1>
 
             <p className="hero-body">
-              Professional cleaning, maintenance, pest control and facilities support
-              for businesses, schools and residential estates across Uganda.
+              Professional facilities management for businesses, schools, healthcare
+              and residential estates across Uganda.
             </p>
 
             <ul className="hero-trust-list">
@@ -242,34 +267,45 @@ function App() {
             <header className="section-header">
               <p className="section-eyebrow">What We Deliver</p>
               <h2 className="section-heading">Our Services</h2>
-              <p className="section-lead">
-                Technical maintenance and workspace care combined into one streamlined
-                programme that preserves asset value and improves daily performance.
-              </p>
             </header>
 
-            <div className="svc-grid">
-              {SERVICES.map(({ img, icon, title, desc }) => (
-                <article key={title} className="svc-card">
-                  <div className="svc-thumb">
-                    <img
-                      src={img}
-                      alt={title}
-                      className="svc-img"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="svc-body">
-                    <div className="svc-icon-badge" aria-hidden="true">{icon}</div>
-                    <h3 className="svc-title">{title}</h3>
-                    <p className="svc-desc">{desc}</p>
-                    <a href="#contact" className="svc-link">
-                    Learn more
-                    <span className="svc-link-arrow" aria-hidden="true">→</span>
-                  </a>
-                  </div>
-                </article>
+            {/* Tab navigation */}
+            <div className="svc-tabs" role="tablist">
+              {SERVICES.map((svc, i) => (
+                <button
+                  key={svc.tab}
+                  role="tab"
+                  aria-selected={activeService === i}
+                  className={`svc-tab${activeService === i ? ' svc-tab--active' : ''}`}
+                  onClick={() => setActiveService(i)}
+                >
+                  {svc.tab}
+                </button>
               ))}
+            </div>
+
+            {/* Active service showcase */}
+            <div className="svc-showcase" key={activeService}>
+              <div className="svc-showcase-text">
+                <h3 className="svc-showcase-title">{SERVICES[activeService].title}</h3>
+                <p className="svc-showcase-desc">{SERVICES[activeService].desc}</p>
+                <ul className="svc-showcase-benefits">
+                  {SERVICES[activeService].benefits.map(b => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+                <a href="#contact" className="btn btn-primary">
+                  Request a Quote
+                </a>
+              </div>
+              <div className="svc-showcase-visual">
+                <img
+                  src={SERVICES[activeService].img}
+                  alt={SERVICES[activeService].title}
+                  className="svc-showcase-img"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
           </div>
