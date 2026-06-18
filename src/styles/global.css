@@ -294,96 +294,74 @@ section {
 
 /* ─── Hero ────────────────────────────────────────────────── */
 
-@keyframes hero-glow {
-  0%, 100% { opacity: 0.45; }
-  50%       { opacity: 0.72; }
-}
-
 @keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
 
+/* ─── Hero — Split layout ─────────────────────────────────── */
 .hero {
-  position: relative;
-  min-height: 100svh;
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 680px;
+  overflow: hidden;
+  padding-block: 0;
+}
+
+/* Left panel — dark brand column */
+.hero-left {
+  background: var(--navy-dark);
   display: flex;
-  align-items: center;
-  padding-block: 9rem 5.5rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6.5rem 3.5rem 5rem clamp(1.5rem, 6vw, 6rem);
+  position: relative;
+  animation: hero-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Right panel — edge-to-edge skyline */
+.hero-right {
+  position: relative;
   overflow: hidden;
 }
 
-/* Atmospheric depth layer */
-.hero-atmosphere {
+.hero-image {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 55% 85% at 22% 55%, rgba(14, 45, 69, 0.42) 0%, transparent 65%),
-    radial-gradient(ellipse 30% 45% at 72% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 55%);
-  animation: hero-glow 7s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Uganda-inspired ribbon */
-.hero-ribbon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 65%;
-  height: 170px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-ribbon svg {
-  display: block;
   width: 100%;
   height: 100%;
-}
-
-/* Content container */
-.hero > .container {
-  position: relative;
-  z-index: 3;
-}
-
-/* Left-side content */
-.hero-content {
-  max-width: 37rem;
-  animation: hero-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
 }
 
 /* Brand signature */
 .hero-brand {
   display: inline-flex;
   flex-direction: column;
-  gap: 0.3rem;
-  margin-bottom: 2.25rem;
+  gap: 0;
+  margin-bottom: 2rem;
 }
 
 .hero-brand-name {
-  font-size: clamp(2.5rem, 6vw, 5.25rem);
+  font-size: clamp(2.25rem, 3vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--white);
   line-height: 1;
-  text-shadow:
-    0 0 80px rgba(212, 175, 55, 0.12),
-    0 2px 24px rgba(0, 0, 0, 0.45);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+  margin-bottom: 0.5rem;
 }
 
 .hero-brand-sub {
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.26em;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--gold);
-  opacity: 0.82;
+  opacity: 0.6;
 }
 
 /* Eyebrow */
@@ -396,13 +374,13 @@ section {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.625rem;
+  margin-bottom: 1.375rem;
 }
 
 .hero-eyebrow::before {
   content: '';
   display: block;
-  width: 2.25rem;
+  width: 2rem;
   height: 2px;
   background-color: var(--gold);
   flex-shrink: 0;
@@ -410,12 +388,12 @@ section {
 
 /* Heading */
 .hero-heading {
-  font-size: clamp(1.875rem, 4vw, 3.375rem);
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.13;
   letter-spacing: -0.025em;
   color: var(--white);
-  margin-bottom: 1.625rem;
+  margin-bottom: 1.375rem;
 }
 
 .hero-heading-accent {
@@ -425,39 +403,38 @@ section {
 
 /* Body */
 .hero-body {
-  font-size: 1.0625rem;
-  line-height: 1.78;
-  color: rgba(255, 255, 255, 0.62);
-  max-width: 30rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1.75rem;
 }
 
 /* Trust pills */
 .hero-trust-pills {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 2.25rem;
+  gap: 0.625rem;
+  margin-bottom: 2rem;
 }
 
 .hero-trust-pill {
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .hero-pill-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1.5px solid rgba(212, 175, 55, 0.45);
-  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.06);
   color: var(--gold);
   flex-shrink: 0;
 }
@@ -468,11 +445,11 @@ section {
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .hero-actions .btn {
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 1.875rem;
   font-size: 0.875rem;
   letter-spacing: 0.015em;
   transition: background-color var(--transition), color var(--transition),
@@ -486,30 +463,29 @@ section {
 }
 
 .hero-actions .btn-outline {
-  border-color: rgba(255, 255, 255, 0.45);
-  color: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(4px);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.82);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .hero-actions .btn-outline:hover {
-  border-color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--white);
   transform: translateY(-2px);
 }
 
 /* Trust line */
 .hero-trust {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.36);
+  font-size: 0.775rem;
+  color: rgba(255, 255, 255, 0.3);
   letter-spacing: 0.01em;
   line-height: 1.6;
 }
 
 .hero-trust-link {
   color: var(--gold);
-  opacity: 0.7;
+  opacity: 0.62;
   text-decoration: none;
   transition: opacity var(--transition);
 }
@@ -518,20 +494,37 @@ section {
   opacity: 1;
 }
 
+/* Uganda identity — 4px accent stripe at base of left panel */
+.hero-uganda-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  display: flex;
+}
+
+.hero-uganda-accent span { flex: 1; }
+.hero-uganda-accent span:nth-child(1) { background: #111111; }
+.hero-uganda-accent span:nth-child(2) { background: #FCD205; }
+.hero-uganda-accent span:nth-child(3) { background: #CC0000; }
+
 /* ─── Hero — Responsive ───────────────────────────────────── */
 @media (max-width: 960px) {
   .hero {
+    grid-template-columns: 1fr;
     min-height: auto;
-    padding-block: 7rem 4rem;
+    padding-block: 0;
   }
 
-  .hero-content {
-    max-width: 100%;
+  .hero-right {
+    height: 300px;
+    order: -1;
   }
 
-  .hero-ribbon {
-    width: 80%;
-    height: 130px;
+  .hero-left {
+    padding: 3rem 2rem 4rem;
+    animation: none;
   }
 
   .hero-brand-name {
@@ -540,18 +533,16 @@ section {
 }
 
 @media (max-width: 480px) {
-  .hero {
-    padding-block: 6rem 3.5rem;
-    background-position: 75% center;
+  .hero-right {
+    height: 220px;
   }
 
-  .hero-ribbon {
-    width: 95%;
-    height: 100px;
+  .hero-left {
+    padding: 2.5rem 1.5rem 3.5rem;
   }
 
   .hero-brand-name {
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
   }
 
   .hero-actions {
