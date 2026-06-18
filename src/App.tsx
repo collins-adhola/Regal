@@ -29,6 +29,7 @@ const SERVICES = [
     img:      cleaningImg,
     tab:      'Cleaning & Hygiene',
     title:    'Cleaning & Hygiene',
+    theme:    'purple',
     desc:     'Professional cleaning programmes for offices, schools, healthcare environments and residential estates — delivered with documented quality controls and HSE-compliant procedures.',
     benefits: [
       'Quality Assurance Protocols',
@@ -41,6 +42,7 @@ const SERVICES = [
     img:      maintenanceImg,
     tab:      'Maintenance',
     title:    'Maintenance & Repairs',
+    theme:    'navy',
     desc:     'Preventive and reactive maintenance for electrical, plumbing, HVAC and building fabric — keeping your assets operational and lifecycle costs controlled.',
     benefits: [
       'Planned Preventive Maintenance',
@@ -53,6 +55,7 @@ const SERVICES = [
     img:      pestControlImg,
     tab:      'Pest Control',
     title:    'Pest Control',
+    theme:    'teal',
     desc:     'Integrated pest management combining scheduled prevention and targeted treatment to protect occupant health and maintain full regulatory compliance.',
     benefits: [
       'Integrated Prevention Plans',
@@ -65,6 +68,7 @@ const SERVICES = [
     img:      propertyCareImg,
     tab:      'Property Care',
     title:    'Property Care',
+    theme:    'sandstone',
     desc:     'Grounds and property upkeep for estates, institutional facilities and commercial sites — with structured condition reporting and planned service delivery.',
     benefits: [
       'Grounds & Landscape Management',
@@ -180,9 +184,7 @@ function App() {
 
             <ul className="hero-trust-list">
               <li>Trained &amp; Vetted Teams</li>
-              <li>HSE-Compliant Operations</li>
               <li>SLA-Based Reporting</li>
-              <li>Rapid Response Support</li>
             </ul>
 
             <div className="hero-actions">
@@ -193,8 +195,6 @@ function App() {
                 View Services
               </a>
             </div>
-
-            <p className="hero-locale">Serving businesses across Uganda</p>
 
           </div>
 
@@ -267,6 +267,7 @@ function App() {
             <header className="section-header">
               <p className="section-eyebrow">What We Deliver</p>
               <h2 className="section-heading">Our Services</h2>
+              <p className="section-lead">Select a service to explore</p>
             </header>
 
             {/* Tab navigation */}
@@ -284,27 +285,29 @@ function App() {
               ))}
             </div>
 
-            {/* Active service showcase */}
-            <div className="svc-showcase" key={activeService}>
-              <div className="svc-showcase-text">
-                <h3 className="svc-showcase-title">{SERVICES[activeService].title}</h3>
-                <p className="svc-showcase-desc">{SERVICES[activeService].desc}</p>
-                <ul className="svc-showcase-benefits">
-                  {SERVICES[activeService].benefits.map(b => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-                <a href="#contact" className="btn btn-primary">
-                  Request a Quote
-                </a>
-              </div>
-              <div className="svc-showcase-visual">
-                <img
-                  src={SERVICES[activeService].img}
-                  alt={SERVICES[activeService].title}
-                  className="svc-showcase-img"
-                  loading="lazy"
-                />
+            {/* Active service showcase — outer holds theme/bg, inner remounts for fade */}
+            <div className="svc-showcase" data-theme={SERVICES[activeService].theme}>
+              <div className="svc-showcase-inner" key={activeService}>
+                <div className="svc-showcase-text">
+                  <h3 className="svc-showcase-title">{SERVICES[activeService].title}</h3>
+                  <p className="svc-showcase-desc">{SERVICES[activeService].desc}</p>
+                  <ul className="svc-showcase-benefits">
+                    {SERVICES[activeService].benefits.map(b => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  <a href="#contact" className="btn btn-primary svc-cta">
+                    Request a Quote
+                  </a>
+                </div>
+                <div className="svc-showcase-visual">
+                  <img
+                    src={SERVICES[activeService].img}
+                    alt={SERVICES[activeService].title}
+                    className="svc-showcase-img"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
 
