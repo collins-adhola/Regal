@@ -278,6 +278,7 @@ function App() {
                   role="tab"
                   aria-selected={activeService === i}
                   className={`svc-tab${activeService === i ? ' svc-tab--active' : ''}`}
+                  data-tab-theme={svc.theme}
                   onClick={() => setActiveService(i)}
                 >
                   {svc.tab}
