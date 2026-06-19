@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: 'Home',       href: '#home'       },
   { label: 'Services',   href: '#services'   },
   { label: 'Industries', href: '#industries' },
-  { label: 'Process',    href: '#process'    },
+  { label: 'Why Regal',  href: '#why-regal'  },
   { label: 'About Us',   href: '#about'      },
   { label: 'Contact',    href: '#contact'    },
 ]
@@ -18,60 +18,147 @@ const NAV_LINKS = [
 const INDUSTRY_NODES = [
   {
     title: 'Hospitals & Clinics',
+    sub:   'Healthcare Facilities',
+    bg:    '#6B2D90',
+    dark:  true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="3" stroke="#D4A62A" strokeWidth="1.5"/>
-        <path d="M12 8v8M8 12h8" stroke="#D4A62A" strokeWidth="2" strokeLinecap="round"/>
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
     title: 'Schools & Universities',
+    sub:   'Education Campuses',
+    bg:    '#D97706',
+    dark:  true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <path d="M22 9L12 4 2 9l10 5 10-5z" fill="#D4A62A" fillOpacity="0.15" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5" stroke="#D4A62A" strokeWidth="1.5" strokeLinecap="round"/>
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <path d="M22 9L12 4 2 9l10 5 10-5z" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
     title: 'Retail & Mixed Use',
+    sub:   'Shopping & Business Parks',
+    bg:    '#134E4A',
+    dark:  true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
-        <line x1="3" y1="6" x2="21" y2="6" stroke="#D4A62A" strokeWidth="1.5"/>
-        <path d="M16 10a4 4 0 01-8 0" stroke="#D4A62A" strokeWidth="1.5"/>
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M16 10a4 4 0 01-8 0" stroke="currentColor" strokeWidth="1.5"/>
       </svg>
     ),
   },
   {
     title: 'Government Buildings',
+    sub:   'Public Sector Sites',
+    bg:    '#C8950E',
+    dark:  false,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <path d="M3 21h18M12 3L2 9h20L12 3z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
-        <line x1="5"    y1="9" x2="5"    y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
-        <line x1="9.5"  y1="9" x2="9.5"  y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
-        <line x1="14.5" y1="9" x2="14.5" y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
-        <line x1="19"   y1="9" x2="19"   y2="21" stroke="#D4A62A" strokeWidth="1.4"/>
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <path d="M3 21h18M12 3L2 9h20L12 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <line x1="5"    y1="9" x2="5"    y2="21" stroke="currentColor" strokeWidth="1.4"/>
+        <line x1="9.5"  y1="9" x2="9.5"  y2="21" stroke="currentColor" strokeWidth="1.4"/>
+        <line x1="14.5" y1="9" x2="14.5" y2="21" stroke="currentColor" strokeWidth="1.4"/>
+        <line x1="19"   y1="9" x2="19"   y2="21" stroke="currentColor" strokeWidth="1.4"/>
       </svg>
     ),
   },
   {
     title: 'Corporate Offices',
+    sub:   'Commercial Buildings',
+    bg:    '#0F2B46',
+    dark:  true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <rect x="3" y="2" width="18" height="20" rx="1" stroke="#D4A62A" strokeWidth="1.5"/>
-        <path d="M7 6h2m4 0h2M7 10h2m4 0h2" stroke="#D4A62A" strokeWidth="1.3" strokeLinecap="round"/>
-        <path d="M9 22v-5h6v5" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <rect x="3" y="2" width="18" height="20" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M7 6h2m4 0h2M7 10h2m4 0h2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+        <path d="M9 22v-5h6v5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
     title: 'Residential Estates',
+    sub:   'Managed Communities',
+    bg:    '#E8DFC9',
+    dark:  false,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+        <path d="M3 9.5L12 3l9 6.5V21H3V9.5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M9 21v-7h6v7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+]
+
+const WHY_REGAL = [
+  {
+    title: 'HSE-Compliant Operations',
+    desc:  'Operate safely and in line with regulatory requirements across all service lines.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
-        <path d="M3 9.5L12 3l9 6.5V21H3V9.5z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M9 21v-7h6v7" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M12 2L3 6v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V6l-9-4z" stroke="#D4A62A" strokeWidth="1.5" fill="#D4A62A" fillOpacity="0.12" strokeLinejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="#D4A62A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Rapid Response Teams',
+    desc:  'Fast mobilisation and reactive support when your building operations need it most.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#D4A62A" strokeWidth="1.5" strokeLinejoin="round" fill="#D4A62A" fillOpacity="0.12"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'SLA-Based Reporting',
+    desc:  'Transparent, measurable performance reporting against agreed service level agreements.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M3 3v18h18" stroke="#D4A62A" strokeWidth="1.5" strokeLinecap="round"/>
+        <rect x="7"  y="10" width="3" height="8" rx="1" fill="#D4A62A"/>
+        <rect x="12" y="6"  width="3" height="12" rx="1" fill="#D4A62A" fillOpacity="0.7"/>
+        <rect x="17" y="8"  width="3" height="10" rx="1" fill="#D4A62A" fillOpacity="0.85"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Trained & Vetted Teams',
+    desc:  'Qualified, background-checked personnel with structured on-site supervision.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="7" r="4" stroke="#D4A62A" strokeWidth="1.5"/>
+        <path d="M5 21v-1a7 7 0 0114 0v1" stroke="#D4A62A" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M9.5 12l1 1 3-3" stroke="#D4A62A" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Single Facilities Partner',
+    desc:  'One accountable point of contact managing all your facility services and vendors.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" stroke="#D4A62A" strokeWidth="1.5" fill="#D4A62A" fillOpacity="0.2"/>
+        <circle cx="4"  cy="5"  r="2" stroke="#D4A62A" strokeWidth="1.3"/>
+        <circle cx="20" cy="5"  r="2" stroke="#D4A62A" strokeWidth="1.3"/>
+        <circle cx="4"  cy="19" r="2" stroke="#D4A62A" strokeWidth="1.3"/>
+        <circle cx="20" cy="19" r="2" stroke="#D4A62A" strokeWidth="1.3"/>
+        <path d="M6 6l5 5M18 6l-5 5M6 18l5-5M18 18l-5-5" stroke="#D4A62A" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Nationwide Coverage',
+    desc:  'Operational capability supporting organisations across Uganda\'s key urban and regional centres.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#D4A62A" strokeWidth="1.5" fill="#D4A62A" fillOpacity="0.12"/>
+        <circle cx="12" cy="9" r="2.5" stroke="#D4A62A" strokeWidth="1.5"/>
       </svg>
     ),
   },
@@ -133,28 +220,6 @@ const SERVICES = [
 ]
 
 
-const PROCESS_STEPS = [
-  {
-    num: '01',
-    title: 'Site Assessment',
-    desc: 'Free compliance review and facility audit covering building systems, risks and service requirements.',
-  },
-  {
-    num: '02',
-    title: 'Service Planning',
-    desc: 'Tailored IFM plan with scheduled maintenance, vendor coordination and clear service deliverables.',
-  },
-  {
-    num: '03',
-    title: 'Operational Delivery',
-    desc: 'Trained teams deployed with single-point accountability and fully documented service execution.',
-  },
-  {
-    num: '04',
-    title: 'Reporting & Review',
-    desc: 'Monthly performance data, work order records and structured continuous improvement reviews.',
-  },
-] as const
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -383,20 +448,22 @@ function App() {
             {/* Desktop: radial network diagram */}
             <div className="ind-network" role="img" aria-label="Network diagram: six industry sectors connected to Regal at the centre">
 
-              {/* Gold connector lines — trimmed to circle edges, arrows point toward REGAL */}
-              <svg className="ind-connectors" viewBox="0 0 680 520" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+              {/* Connector lines + decorative orbit ring */}
+              <svg className="ind-connectors" viewBox="0 0 720 560" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <marker id="ind-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-                    <path d="M0,0.5 L0,6.5 L6,3.5 Z" fill="#D4A62A" fillOpacity="0.6"/>
+                    <path d="M0,0.5 L0,6.5 L6,3.5 Z" fill="#D4A62A" fillOpacity="0.7"/>
                   </marker>
                 </defs>
-                {/* Each line: outer node edge → REGAL circle edge */}
-                <line x1="340" y1="113" x2="340" y2="195" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
-                <line x1="467" y1="187" x2="396" y2="228" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
-                <line x1="467" y1="333" x2="396" y2="292" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
-                <line x1="340" y1="407" x2="340" y2="325" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
-                <line x1="213" y1="333" x2="284" y2="292" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
-                <line x1="213" y1="187" x2="284" y2="228" stroke="#D4A62A" strokeWidth="1.5" strokeOpacity="0.45" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                {/* Subtle orbit ring */}
+                <circle cx="360" cy="280" r="200" stroke="#D4A62A" strokeWidth="1" strokeOpacity="0.10" fill="none" strokeDasharray="3 6"/>
+                {/* Lines: outer node edge → REGAL edge, clockwise from 12 o'clock */}
+                <line x1="360" y1="145" x2="360" y2="200" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="477" y1="213" x2="429" y2="240" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="477" y1="348" x2="429" y2="320" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="360" y1="415" x2="360" y2="360" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="243" y1="348" x2="291" y2="320" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
+                <line x1="243" y1="213" x2="291" y2="240" stroke="#D4A62A" strokeWidth="2" strokeOpacity="0.55" strokeDasharray="5 3" markerEnd="url(#ind-arrow)"/>
               </svg>
 
               {/* Centre REGAL hub */}
@@ -407,9 +474,14 @@ function App() {
 
               {/* Six industry nodes — clockwise from 12 o'clock */}
               {INDUSTRY_NODES.map((node, i) => (
-                <div key={node.title} className={`ind-node ind-node--${i + 1}`}>
+                <div
+                  key={node.title}
+                  className={`ind-node ind-node--${i + 1}${node.dark ? ' ind-node--dark' : ' ind-node--light'}`}
+                  style={{ background: node.bg }}
+                >
                   <span className="ind-node-icon">{node.icon}</span>
-                  <span className="ind-node-label">{node.title}</span>
+                  <span className="ind-node-name">{node.title}</span>
+                  <span className="ind-node-sub">{node.sub}</span>
                 </div>
               ))}
             </div>
@@ -422,9 +494,14 @@ function App() {
               </div>
               <div className="ind-mobile-grid">
                 {INDUSTRY_NODES.map((node) => (
-                  <div key={node.title} className="ind-mobile-item">
+                  <div
+                    key={node.title}
+                    className={`ind-mobile-item${node.dark ? ' ind-mobile--dark' : ' ind-mobile--light'}`}
+                    style={{ background: node.bg }}
+                  >
                     <span className="ind-mobile-icon">{node.icon}</span>
                     <span className="ind-mobile-label">{node.title}</span>
+                    <span className="ind-mobile-sub-label">{node.sub}</span>
                   </div>
                 ))}
               </div>
@@ -433,23 +510,23 @@ function App() {
           </div>
         </section>
 
-        {/* ── How We Engage ── */}
-        <section id="process" className="process">
+        {/* ── Why Choose REGAL ── */}
+        <section id="why-regal" className="why-regal">
           <div className="container">
             <header className="section-header">
-              <p className="section-eyebrow">Our Approach</p>
-              <h2 className="section-heading">How We Engage</h2>
+              <p className="section-eyebrow">Why Regal</p>
+              <h2 className="section-heading">Why Organisations Choose REGAL</h2>
               <p className="section-lead">
-                A structured four-stage process — from initial site review to
-                ongoing performance reporting and continuous improvement.
+                A trusted facilities partner delivering compliance, accountability
+                and operational excellence across Uganda.
               </p>
             </header>
-            <div className="process-steps">
-              {PROCESS_STEPS.map(({ num, title, desc }) => (
-                <div key={num} className="process-step">
-                  <div className="process-num">{num}</div>
-                  <h3 className="process-title">{title}</h3>
-                  <p className="process-desc">{desc}</p>
+            <div className="why-grid">
+              {WHY_REGAL.map(({ icon, title, desc }) => (
+                <div key={title} className="why-card">
+                  <div className="why-card-icon">{icon}</div>
+                  <h3 className="why-card-title">{title}</h3>
+                  <p className="why-card-desc">{desc}</p>
                 </div>
               ))}
             </div>
@@ -627,7 +704,7 @@ function App() {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#industries">Industries</a></li>
-                <li><a href="#process">Process</a></li>
+                <li><a href="#why-regal">Why Regal</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>

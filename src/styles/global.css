@@ -1014,15 +1014,15 @@ section {
 
 /* ─── Industries — Network Diagram ────────────────────────── */
 .industries {
-  background-color: var(--white);
-  padding-block: 5rem;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, #ffffff 0%, #f3f5f9 55%, #e8edf5 100%);
+  padding-block: 4rem;
 }
 
 /* ── Desktop radial network ── */
 .ind-network {
   position: relative;
-  max-width: 680px;
-  aspect-ratio: 680 / 520;
+  max-width: 720px;
+  aspect-ratio: 720 / 560;
   margin: 0 auto;
 }
 
@@ -1034,32 +1034,41 @@ section {
   pointer-events: none;
 }
 
+@keyframes ind-flow {
+  from { stroke-dashoffset: 16; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.ind-connectors line {
+  animation: ind-flow 1.8s linear infinite;
+}
+
 /* Centre REGAL hub */
 .ind-hub {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   background: #0F2942;
-  border: 2.5px solid #D4A62A;
+  border: 3px solid #D4A62A;
   box-shadow:
-    0 0 0 8px rgba(212, 166, 42, 0.10),
-    0 12px 40px rgba(15, 41, 66, 0.30);
+    0 0 0 10px rgba(212, 166, 42, 0.10),
+    0 16px 48px rgba(15, 41, 66, 0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.15rem;
+  gap: 0.2rem;
   z-index: 3;
   text-align: center;
-  padding: 0.75rem;
+  padding: 1rem;
 }
 
 .ind-hub-name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: #D4A62A;
   letter-spacing: 0.18em;
@@ -1067,41 +1076,48 @@ section {
 }
 
 .ind-hub-sub {
-  font-size: 0.48rem;
+  font-size: 0.52rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.65);
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Outer industry nodes */
 .ind-node {
   position: absolute;
-  width: 96px;
-  height: 96px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  background: #F8FAFC;
-  border: 2px solid rgba(212, 166, 42, 0.38);
-  box-shadow: 0 4px 18px rgba(15, 41, 66, 0.08);
+  border: 2.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  padding: 0.75rem;
+  padding: 1rem;
   text-align: center;
   cursor: default;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
 }
 
 .ind-node:hover {
-  transform: translate(-50%, calc(-50% - 5px));
-  box-shadow: 0 10px 28px rgba(15, 41, 66, 0.14);
-  border-color: rgba(212, 166, 42, 0.80);
+  transform: translate(-50%, calc(-50% - 6px));
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  filter: brightness(1.12);
 }
+
+/* Dark nodes: white icons + text */
+.ind-node--dark { color: rgba(255, 255, 255, 0.95); }
+/* Light nodes: navy icons + text */
+.ind-node--light { color: #0F2942; }
 
 .ind-node-icon {
   display: flex;
@@ -1110,20 +1126,26 @@ section {
   flex-shrink: 0;
 }
 
-.ind-node-label {
-  font-size: 0.58rem;
-  font-weight: 600;
-  color: #0F2942;
-  line-height: 1.25;
+.ind-node-name {
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-/* Clockwise from 12 o'clock */
-.ind-node--1 { left: 50%;    top: 12.5%;  } /* Hospitals */
-.ind-node--2 { left: 74.85%; top: 31.35%; } /* Schools */
-.ind-node--3 { left: 74.85%; top: 68.65%; } /* Retail */
-.ind-node--4 { left: 50%;    top: 87.5%;  } /* Government */
-.ind-node--5 { left: 25.15%; top: 68.65%; } /* Corporate */
-.ind-node--6 { left: 25.15%; top: 31.35%; } /* Residential */
+.ind-node-sub {
+  font-size: 0.55rem;
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.78;
+}
+
+/* Clockwise from 12 o'clock — percentages derived from 720×560 viewbox */
+.ind-node--1 { left: 50%;    top: 14.29%; } /* Hospitals   */
+.ind-node--2 { left: 74.03%; top: 32.14%; } /* Schools     */
+.ind-node--3 { left: 74.03%; top: 67.86%; } /* Retail      */
+.ind-node--4 { left: 50%;    top: 85.71%; } /* Government  */
+.ind-node--5 { left: 25.97%; top: 67.86%; } /* Corporate   */
+.ind-node--6 { left: 25.97%; top: 32.14%; } /* Residential */
 
 /* ── Mobile: hide network, show 2-col grid ── */
 .ind-mobile { display: none; }
@@ -1177,13 +1199,14 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    background: #F8FAFC;
-    border: 1.5px solid rgba(212, 166, 42, 0.35);
     border-radius: var(--radius-md);
     padding: 1.25rem 0.75rem;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(15, 41, 66, 0.06);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
   }
+
+  .ind-mobile--dark { color: rgba(255, 255, 255, 0.95); }
+  .ind-mobile--light { color: #0F2942; }
 
   .ind-mobile-icon {
     display: flex;
@@ -1193,24 +1216,105 @@ section {
 
   .ind-mobile-label {
     font-size: 0.8rem;
-    font-weight: 600;
-    color: #0F2942;
-    line-height: 1.3;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .ind-mobile-sub-label {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.75;
+    line-height: 1.2;
   }
 }
 
 /* ─── Industries — Responsive padding ─────────────────────── */
 @media (max-width: 960px) {
-  .industries { padding-block: 4rem; }
+  .industries { padding-block: 3.5rem; }
 }
 @media (max-width: 600px) {
-  .industries { padding-block: 3.5rem; }
+  .industries { padding-block: 3rem; }
+}
+
+/* ─── Why Organisations Choose REGAL ──────────────────────── */
+.why-regal {
+  background: #0F2942;
+  padding-block: 4.5rem;
+}
+
+.why-regal .section-eyebrow {
+  color: #D4A62A;
+}
+
+.why-regal .section-eyebrow::before,
+.why-regal .section-eyebrow::after {
+  background: rgba(212, 166, 42, 0.45);
+}
+
+.why-regal .section-heading { color: var(--white); }
+.why-regal .section-lead    { color: rgba(255, 255, 255, 0.62); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.125rem;
+}
+
+.why-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.625rem;
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.why-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(212, 166, 42, 0.35);
+  transform: translateY(-3px);
+}
+
+.why-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(212, 166, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.125rem;
+  flex-shrink: 0;
+}
+
+.why-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.why-card-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.72;
+}
+
+@media (max-width: 960px) {
+  .why-regal { padding-block: 4rem; }
+  .why-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .why-regal { padding-block: 3.5rem; }
+  .why-grid  { grid-template-columns: 1fr; gap: 0.875rem; }
 }
 
 /* ─── Contact ──────────────────────────────────────────────── */
 .contact {
   background-color: var(--light-bg);
-  padding-block: 5rem 5.5rem;
+  padding-block: 3.75rem 4rem;
 }
 
 .contact-inner {
@@ -1482,78 +1586,6 @@ a.ct-card-value:hover {
 }
 
 
-/* ─── How We Engage ────────────────────────────────────────── */
-.process {
-  background-color: var(--light-bg);
-  padding-block: 4.5rem;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 2px solid var(--border);
-}
-
-.process-step {
-  position: relative;
-}
-
-.process-step::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: var(--gold);
-  margin-bottom: 1.25rem;
-}
-
-.process-num {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--gold-dark);
-  letter-spacing: -0.05em;
-  line-height: 1;
-  margin-bottom: 0.875rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.process-title {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-}
-
-.process-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.72;
-}
-
-@media (max-width: 960px) {
-  .process {
-    padding-block: 4rem;
-  }
-
-  .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .process {
-    padding-block: 3.5rem;
-  }
-
-  .process-steps {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
 
 /* ─── Footer ──────────────────────────────────────────────── */
 .site-footer {
