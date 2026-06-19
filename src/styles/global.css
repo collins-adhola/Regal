@@ -1534,6 +1534,23 @@ a.ct-card-value:hover {
   border-top: 5.5px solid var(--muted);
 }
 
+/* WhatsApp link — contact card */
+.ct-whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #25D366;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.ct-whatsapp-link:hover {
+  opacity: 0.75;
+}
+
 /* Submit button */
 .ct-submit {
   width: 100%;
@@ -1704,6 +1721,24 @@ a.ct-card-value:hover {
 
 a.ft-contact-value:hover {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* WhatsApp link — footer */
+.ft-whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #25D366;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+
+.ft-whatsapp-link:hover {
+  opacity: 1;
 }
 
 /* Bottom bar */
