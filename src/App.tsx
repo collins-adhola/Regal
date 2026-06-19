@@ -224,7 +224,7 @@ const SERVICES = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeService, setActiveService] = useState(0)
+  const [activeService, setActiveService] = useState(1)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
