@@ -224,11 +224,27 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeService, setActiveService] = useState(1)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const ids = ['home', 'services', 'industries', 'contact']
+    const observers = ids.map(id => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { rootMargin: '-35% 0px -60% 0px' }
+      )
+      obs.observe(el)
+      return obs
+    })
+    return () => observers.forEach(obs => obs?.disconnect())
   }, [])
 
   const closeMenu = () => setMenuOpen(false)
@@ -249,7 +265,11 @@ function App() {
             <ul className="nav-list">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
-                  <a href={href} className="nav-link" onClick={closeMenu}>
+                  <a
+                    href={href}
+                    className={`nav-link${activeSection === href.slice(1) ? ' nav-link--active' : ''}`}
+                    onClick={closeMenu}
+                  >
                     {label}
                   </a>
                 </li>

@@ -59,7 +59,7 @@ a {
 
 /* Section spacing */
 section {
-  padding-block: 5rem;
+  padding-block: 4.5rem;
 }
 
 /* Button base */
@@ -120,21 +120,24 @@ section {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--white);
-  border-bottom: 1px solid var(--border);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background-color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 0 rgba(226, 232, 240, 0.6), 0 4px 24px rgba(15, 41, 66, 0.05);
+  transition: box-shadow var(--transition), border-color var(--transition);
 }
 
 .site-header--scrolled {
-  border-bottom-color: var(--border);
-  box-shadow: 0 2px 16px rgba(15, 41, 66, 0.07);
+  border-bottom-color: rgba(226, 232, 240, 0.8);
+  box-shadow: 0 1px 0 rgba(226, 232, 240, 0.7), 0 8px 32px rgba(15, 41, 66, 0.10);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  height: 5rem;
+  height: 5.5rem;
 }
 
 /* Brand */
@@ -145,7 +148,7 @@ section {
 }
 
 .nav-logo {
-  height: 56px;
+  height: 62px;
   width: auto;
   display: block;
   transition: opacity var(--transition);
@@ -171,13 +174,13 @@ section {
 .nav-link {
   display: block;
   position: relative;
-  padding: 0.5rem 1.125rem;
+  padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: rgba(15, 41, 66, 0.62);
+  font-weight: 600;
+  color: rgba(15, 41, 66, 0.65);
   letter-spacing: 0.01em;
   border-radius: var(--radius-sm);
-  transition: color var(--transition), background-color var(--transition);
+  transition: color 0.2s ease, background-color 0.2s ease;
   white-space: nowrap;
 }
 
@@ -187,30 +190,43 @@ section {
   bottom: 3px;
   left: 0.875rem;
   right: 0.875rem;
-  height: 2px;
-  background: #E89B22;
-  border-radius: 1px;
+  height: 2.5px;
+  background: var(--gold);
+  border-radius: 2px;
   transform: scaleX(0);
-  transition: transform 0.22s ease;
+  transform-origin: left center;
+  transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover {
   color: var(--navy);
-  background-color: rgba(15, 41, 66, 0.05);
+  background-color: rgba(15, 41, 66, 0.04);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link--active::after {
   transform: scaleX(1);
+}
+
+.nav-link--active {
+  color: var(--navy);
 }
 
 /* Header CTA */
 .header-cta {
   flex-shrink: 0;
-  padding: 0.7rem 1.625rem;
+  padding: 0.75rem 1.75rem;
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(212, 166, 42, 0.30), 0 1px 2px rgba(15, 41, 66, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(212, 166, 42, 0.42), 0 2px 6px rgba(15, 41, 66, 0.08);
 }
 
 /* Hamburger */
@@ -258,11 +274,11 @@ section {
   }
 
   .nav-link {
-    padding: 0.5rem 0.875rem;
+    padding: 0.5rem 1rem;
   }
 
   .nav-logo {
-    height: 54px;
+    height: 58px;
   }
 }
 
@@ -329,7 +345,7 @@ section {
 /* ── Hero shell ── */
 .hero {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 0.9fr 1.1fr;
   min-height: 52vh;
   min-height: 52dvh;
   max-height: 580px;
@@ -359,18 +375,19 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 2.5rem 2rem clamp(1.5rem, 6vw, 5rem);
+  padding: 2rem 1rem 2rem clamp(3rem, 10vw, 8rem);
   animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Brand signature — with warm orange left-accent bar */
 .hero-brand {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 0;
   margin-bottom: 1rem;
   position: relative;
   padding-left: 1rem;
+  max-width: 24rem;
 }
 
 .hero-brand::before {
@@ -385,6 +402,7 @@ section {
 }
 
 .hero-brand-name {
+  display: block;
   font-size: clamp(2.5rem, 3.75vw, 4.2rem);
   font-weight: 900;
   letter-spacing: 0.36em;
@@ -514,7 +532,7 @@ section {
 .hero-right {
   position: relative;
   z-index: 1;
-  padding: 0 2.5rem 0 2rem;
+  padding: 0 1.5rem 0 0;
   display: flex;
   align-items: stretch;
 }
@@ -733,8 +751,8 @@ section {
 
 /* ─── Services — Premium Tab Showcase ────────────────────────── */
 .services {
-  background: var(--light-bg);
-  padding-block: 4rem 5rem;
+  background: var(--white);
+  padding-block: 3.5rem 4.5rem;
 }
 
 .services .section-header {
