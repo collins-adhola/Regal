@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: 'Home',       href: '#home'       },
   { label: 'Services',   href: '#services'   },
   { label: 'Industries', href: '#industries' },
-  { label: 'Why Regal',  href: '#why-regal'  },
   { label: 'About Us',   href: '#about'      },
   { label: 'Contact',    href: '#contact'    },
 ]
@@ -438,10 +437,9 @@ function App() {
 
             <header className="section-header">
               <p className="section-eyebrow">Who We Serve</p>
-              <h2 className="section-heading">Industries We Support</h2>
+              <h2 className="section-heading">Industries & Expertise</h2>
               <p className="section-lead">
-                Regal supports the facilities that keep Uganda's workplaces,
-                schools, healthcare environments, estates and public spaces running.
+                Supporting organisations across Uganda with integrated facilities management services.
               </p>
             </header>
 
@@ -507,29 +505,31 @@ function App() {
               </div>
             </div>
 
-          </div>
-        </section>
-
-        {/* ── Why Choose REGAL ── */}
-        <section id="why-regal" className="why-regal">
-          <div className="container">
-            <header className="section-header">
-              <p className="section-eyebrow">Why Regal</p>
-              <h2 className="section-heading">Why Organisations Choose REGAL</h2>
-              <p className="section-lead">
-                A trusted facilities partner delivering compliance, accountability
-                and operational excellence across Uganda.
-              </p>
-            </header>
-            <div className="why-grid">
-              {WHY_REGAL.map(({ icon, title, desc }) => (
-                <div key={title} className="why-card">
-                  <div className="why-card-icon">{icon}</div>
-                  <h3 className="why-card-title">{title}</h3>
-                  <p className="why-card-desc">{desc}</p>
-                </div>
-              ))}
+            {/* ── Expertise strip ── */}
+            <div className="expertise-strip">
+              <p className="expertise-strip-label">Why Organisations Choose Regal</p>
+              <div className="expertise-items">
+                {WHY_REGAL.map(({ title }) => (
+                  <div key={title} className="expertise-item">
+                    <svg viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true">
+                      <circle cx="8" cy="8" r="7" stroke="#D4A62A" strokeWidth="1.25"/>
+                      <path d="M5 8l2 2 4-4" stroke="#D4A62A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {title}
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* ── Section CTA ── */}
+            <div className="industries-cta">
+              <p className="industries-cta-text">Ready to discuss your facilities requirements?</p>
+              <div className="industries-cta-actions">
+                <a href="#contact" className="btn btn-primary">Request a Site Assessment</a>
+                <a href="#contact" className="btn btn-outline-navy">Get a Quote</a>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -715,7 +715,6 @@ function App() {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#industries">Industries</a></li>
-                <li><a href="#why-regal">Why Regal</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>

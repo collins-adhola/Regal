@@ -1012,16 +1012,20 @@ section {
   }
 }
 
-/* ─── Industries — Network Diagram ────────────────────────── */
+/* ─── Industries & Expertise ──────────────────────────────── */
 .industries {
   background: radial-gradient(ellipse 80% 70% at 50% 50%, #ffffff 0%, #f3f5f9 55%, #e8edf5 100%);
-  padding-block: 4rem;
+  padding-block: 3.25rem 2.5rem;
+}
+
+.industries .section-header {
+  margin-bottom: 2.25rem;
 }
 
 /* ── Desktop radial network ── */
 .ind-network {
   position: relative;
-  max-width: 720px;
+  max-width: 840px;
   aspect-ratio: 720 / 560;
   margin: 0 auto;
 }
@@ -1049,8 +1053,8 @@ section {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 160px;
-  height: 160px;
+  width: 185px;
+  height: 185px;
   border-radius: 50%;
   background: #0F2942;
   border: 3px solid #D4A62A;
@@ -1087,8 +1091,8 @@ section {
 /* Outer industry nodes */
 .ind-node {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 163px;
+  height: 163px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -1146,6 +1150,73 @@ section {
 .ind-node--4 { left: 50%;    top: 85.71%; } /* Government  */
 .ind-node--5 { left: 25.97%; top: 67.86%; } /* Corporate   */
 .ind-node--6 { left: 25.97%; top: 32.14%; } /* Residential */
+
+/* ─── Expertise strip ─────────────────────────────────────── */
+.expertise-strip {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(15, 41, 66, 0.08);
+}
+
+.expertise-strip-label {
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.125rem;
+}
+
+.expertise-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+}
+
+.expertise-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.expertise-item:hover {
+  border-color: rgba(212, 166, 42, 0.5);
+  box-shadow: 0 2px 10px rgba(15, 41, 66, 0.07);
+}
+
+/* ─── Industries section CTA ──────────────────────────────── */
+.industries-cta {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(15, 41, 66, 0.08);
+  text-align: center;
+}
+
+.industries-cta-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.industries-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
 
 /* ── Mobile: hide network, show 2-col grid ── */
 .ind-mobile { display: none; }
@@ -1228,87 +1299,29 @@ section {
   }
 }
 
-/* ─── Industries — Responsive padding ─────────────────────── */
+/* ─── Industries & Expertise — Responsive ─────────────────── */
 @media (max-width: 960px) {
-  .industries { padding-block: 3.5rem; }
-}
-@media (max-width: 600px) {
-  .industries { padding-block: 3rem; }
-}
-
-/* ─── Why Organisations Choose REGAL ──────────────────────── */
-.why-regal {
-  background: #0F2942;
-  padding-block: 4.5rem;
-}
-
-.why-regal .section-eyebrow {
-  color: #D4A62A;
-}
-
-.why-regal .section-eyebrow::before,
-.why-regal .section-eyebrow::after {
-  background: rgba(212, 166, 42, 0.45);
-}
-
-.why-regal .section-heading { color: var(--white); }
-.why-regal .section-lead    { color: rgba(255, 255, 255, 0.62); }
-
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.125rem;
-}
-
-.why-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 1.75rem 1.625rem;
-  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
-}
-
-.why-card:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(212, 166, 42, 0.35);
-  transform: translateY(-3px);
-}
-
-.why-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(212, 166, 42, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.125rem;
-  flex-shrink: 0;
-}
-
-.why-card-title {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.why-card-desc {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.58);
-  line-height: 1.72;
-}
-
-@media (max-width: 960px) {
-  .why-regal { padding-block: 4rem; }
-  .why-grid  { grid-template-columns: repeat(2, 1fr); }
+  .industries { padding-block: 3rem 2rem; }
+  .expertise-items { gap: 0.5rem; }
 }
 
 @media (max-width: 600px) {
-  .why-regal { padding-block: 3.5rem; }
-  .why-grid  { grid-template-columns: 1fr; gap: 0.875rem; }
+  .industries { padding-block: 2.5rem 2rem; }
+
+  .expertise-item {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.875rem;
+  }
+
+  .industries-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .industries-cta-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ─── Contact ──────────────────────────────────────────────── */
