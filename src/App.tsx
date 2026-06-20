@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import logoImg          from './assets/logo.png'
 import kampalaImg       from './assets/services/cleaning2.jpg'
 import cleaningImg      from './assets/services/cleaning.jpeg'
@@ -225,6 +225,32 @@ function App() {
   const [scrolled, setScrolled] = useState(false)
   const [activeService, setActiveService] = useState(1)
   const [activeSection, setActiveSection] = useState('home')
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormStatus('sending')
+    const formData = new FormData(e.currentTarget)
+    const body = new URLSearchParams(
+      Array.from(formData.entries()) as [string, string][]
+    ).toString()
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+      if (res.ok) {
+        setFormStatus('success')
+        formRef.current?.reset()
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -635,75 +661,111 @@ function App() {
                 <p className="ct-form-subtitle">Fast, professional proposals for corporate and institutional clients.</p>
               </div>
 
-              <form className="ct-form" noValidate>
-
-                <div className="ct-row ct-row--2">
-                  <div className="ct-field">
-                    <label htmlFor="ct-name">Full Name</label>
-                    <input
-                      type="text" id="ct-name" name="name"
-                      placeholder="John Smith" autoComplete="name"
-                    />
-                  </div>
-                  <div className="ct-field">
-                    <label htmlFor="ct-company">Company Name</label>
-                    <input
-                      type="text" id="ct-company" name="company"
-                      placeholder="Acme Ltd." autoComplete="organization"
-                    />
-                  </div>
+              {formStatus === 'success' ? (
+                <div className="ct-success">
+                  <svg viewBox="0 0 24 24" width="44" height="44" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" stroke="#25D366" strokeWidth="1.5"/>
+                    <path d="M7 12l3.5 3.5L17 9" stroke="#25D366" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <h4 className="ct-success-title">Request Received</h4>
+                  <p className="ct-success-msg">Thank you. Your request has been received and Regal will contact you shortly.</p>
+                  <button type="button" className="btn btn-outline-navy" onClick={() => setFormStatus('idle')}>
+                    Send another enquiry
+                  </button>
                 </div>
+              ) : (
+                <form
+                  className="ct-form"
+                  name="regal-contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                >
+                  <input type="hidden" name="form-name" value="regal-contact" />
+                  <input type="text" name="bot-field" style={{ display: 'none' }} aria-hidden="true" tabIndex={-1} />
 
-                <div className="ct-row ct-row--2">
-                  <div className="ct-field">
-                    <label htmlFor="ct-email">Email Address</label>
-                    <input
-                      type="email" id="ct-email" name="email"
-                      placeholder="you@company.com" autoComplete="email"
-                    />
-                  </div>
-                  <div className="ct-field">
-                    <label htmlFor="ct-tel">Telephone</label>
-                    <input
-                      type="tel" id="ct-tel" name="tel"
-                      placeholder="+256 77 000 0000" autoComplete="tel"
-                    />
-                  </div>
-                </div>
-
-                <div className="ct-row">
-                  <div className="ct-field">
-                    <label htmlFor="ct-service">Service Required</label>
-                    <div className="ct-select-wrap">
-                      <select id="ct-service" name="service" defaultValue="">
-                        <option value="" disabled>Select a service…</option>
-                        <option value="cleaning">Cleaning &amp; Hygiene</option>
-                        <option value="maintenance">Maintenance &amp; Repairs</option>
-                        <option value="pest-control">Pest Control</option>
-                        <option value="property-care">Property Care</option>
-                        <option value="multiple">Multiple Services</option>
-                        <option value="other">Other</option>
-                      </select>
+                  <div className="ct-row ct-row--2">
+                    <div className="ct-field">
+                      <label htmlFor="ct-name">Full Name</label>
+                      <input
+                        type="text" id="ct-name" name="fullName"
+                        placeholder="John Smith" autoComplete="name" required
+                      />
+                    </div>
+                    <div className="ct-field">
+                      <label htmlFor="ct-company">Company Name</label>
+                      <input
+                        type="text" id="ct-company" name="companyName"
+                        placeholder="Acme Ltd." autoComplete="organization"
+                      />
                     </div>
                   </div>
-                </div>
 
-                <div className="ct-row">
-                  <div className="ct-field">
-                    <label htmlFor="ct-message">Message</label>
-                    <textarea
-                      id="ct-message" name="message" rows={4}
-                      placeholder="Briefly describe your requirements…"
-                    />
+                  <div className="ct-row ct-row--2">
+                    <div className="ct-field">
+                      <label htmlFor="ct-email">Email Address</label>
+                      <input
+                        type="email" id="ct-email" name="email"
+                        placeholder="you@company.com" autoComplete="email" required
+                      />
+                    </div>
+                    <div className="ct-field">
+                      <label htmlFor="ct-tel">Telephone</label>
+                      <input
+                        type="tel" id="ct-tel" name="telephone"
+                        placeholder="+256 77 000 0000" autoComplete="tel" required
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <button type="submit" className="btn btn-primary ct-submit">
-                  Request a Proposal
-                  <span className="ct-submit-arrow" aria-hidden="true">→</span>
-                </button>
+                  <div className="ct-row">
+                    <div className="ct-field">
+                      <label htmlFor="ct-service">Service Required</label>
+                      <div className="ct-select-wrap">
+                        <select id="ct-service" name="serviceRequired" defaultValue="" required>
+                          <option value="" disabled>Select a service…</option>
+                          <option value="cleaning">Cleaning &amp; Hygiene</option>
+                          <option value="maintenance">Maintenance &amp; Repairs</option>
+                          <option value="pest-control">Pest Control</option>
+                          <option value="property-care">Property Care</option>
+                          <option value="multiple">Multiple Services</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
 
-              </form>
+                  <div className="ct-row">
+                    <div className="ct-field">
+                      <label htmlFor="ct-message">Message</label>
+                      <textarea
+                        id="ct-message" name="message" rows={4}
+                        placeholder="Briefly describe your requirements…"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {formStatus === 'error' && (
+                    <p className="ct-form-error">
+                      Something went wrong. Please try again or contact us directly.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary ct-submit"
+                    disabled={formStatus === 'sending'}
+                  >
+                    {formStatus === 'sending' ? 'Sending…' : (
+                      <>Request a Proposal <span className="ct-submit-arrow" aria-hidden="true">→</span></>
+                    )}
+                  </button>
+
+                </form>
+              )}
             </div>
 
           </div>

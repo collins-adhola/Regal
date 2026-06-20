@@ -1598,6 +1598,48 @@ a.ct-card-value:hover {
   transform: translateX(4px);
 }
 
+.ct-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ct-form-error {
+  font-size: 0.82rem;
+  color: #c0392b;
+  background: #fdf2f2;
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.ct-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  gap: 1rem;
+}
+
+.ct-success-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+
+.ct-success-msg {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 32ch;
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* ─── Contact — Responsive ───────────────────────────────── */
 @media (max-width: 960px) {
   .contact {
