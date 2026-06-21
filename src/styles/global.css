@@ -750,9 +750,99 @@ section {
 }
 
 /* ─── Services — Premium Tab Showcase ────────────────────────── */
+/* ─── Trust Band ─────────────────────────────────────────────── */
+.trust-band {
+  background: var(--light-bg);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  position: relative;
+}
+
+.trust-band-wave {
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin-bottom: -1px;
+}
+
+.trust-band-card {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 1px 3px rgba(15, 42, 68, 0.04),
+    0 6px 24px rgba(15, 42, 68, 0.07);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
+.tb-half {
+  flex: 1;
+  padding: 1.375rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.tb-half-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.tb-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 1.5rem;
+}
+
+.tb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tb-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(15, 41, 66, 0.06);
+  color: var(--navy-light);
+  flex-shrink: 0;
+}
+
+.tb-item-icon--gold {
+  background: rgba(212, 166, 42, 0.1);
+  color: var(--gold-dark);
+}
+
+.tb-item-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.tb-divider {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+  margin-block: 1.25rem;
+}
+
+/* ─── Services ──────────────────────────────────────────────────── */
 .services {
   background: var(--white);
-  padding-block: 3.5rem 4.5rem;
+  padding-block: 2.25rem 4.5rem;
 }
 
 .services .section-header {
@@ -1355,32 +1445,85 @@ section {
   gap: 4.5rem;
 }
 
-/* Left: info column */
-.ct-info .section-eyebrow {
-  display: flex;
-  width: fit-content;
+/* Section header (above grid) */
+.ct-section-head {
+  text-align: center;
+  margin-bottom: 2.75rem;
 }
 
-.ct-info .section-eyebrow::after {
-  display: none;
-}
-
-.ct-heading {
-  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+.ct-section-title {
+  font-size: clamp(1.65rem, 2.6vw, 2.25rem);
   font-weight: 700;
   color: var(--navy);
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.45rem;
 }
 
-.ct-lead {
+.ct-section-sub {
   font-size: 0.9375rem;
   color: var(--muted);
-  line-height: 1.72;
-  max-width: 29rem;
-  margin-bottom: 2.25rem;
 }
+
+/* Left: trust list */
+.ct-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 1.5rem;
+}
+
+.ct-trust-list {
+  list-style: none;
+  margin: 0 0 2.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ct-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.ct-contact-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.ct-contact-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.ct-contact-phone:hover { color: var(--gold-dark); }
+
+.ct-contact-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #25D366;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.ct-contact-whatsapp:hover { opacity: 0.8; }
 
 /* Contact info cards */
 .ct-cards {
@@ -1646,13 +1789,24 @@ a.ct-card-value:hover {
     padding-block: 4rem;
   }
 
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .ct-section-head {
+    margin-bottom: 2rem;
   }
 
-  .ct-lead {
-    max-width: 100%;
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ct-info {
+    padding-block: 0;
+  }
+
+  .ct-trust-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-bottom: 1.75rem;
   }
 
   .ct-form-wrap {
@@ -1868,5 +2022,30 @@ a.ft-contact-value:hover {
 
   .ft-tagline {
     text-align: left;
+  }
+}
+
+/* ─── Trust Band — Responsive ──────────────────────────────────── */
+@media (max-width: 860px) {
+  .trust-band-card {
+    flex-direction: column;
+  }
+
+  .tb-divider {
+    width: auto;
+    height: 1px;
+    margin-block: 0;
+    margin-inline: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tb-half {
+    padding: 1.125rem 1.25rem;
+  }
+
+  .tb-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }
