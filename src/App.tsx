@@ -566,6 +566,12 @@ function App() {
 
             {/* Tab navigation */}
             <div className="svc-tabs" role="tablist">
+              <span
+                className="svc-tabs-indicator"
+                data-tab-theme={SERVICES[activeService].theme}
+                style={{ transform: `translateX(${activeService * 100}%) translateY(-1px) scale(1.02)` }}
+                aria-hidden="true"
+              />
               {SERVICES.map((svc, i) => (
                 <button
                   key={svc.tab}

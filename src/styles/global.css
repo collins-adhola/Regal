@@ -852,66 +852,119 @@ section {
   max-width: 36rem;
 }
 
-/* Tab navigation — product tile style */
+/* Tab navigation — luxury control panel, one unified segmented control ─── */
 .svc-tabs {
+  position: relative;
   display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  width: min(100%, 46rem);
+  margin: 0 auto 2.75rem;
+  padding: 0.4375rem;
+  border-radius: calc(var(--radius-lg) + 4px);
+  border: 1.25px solid rgba(212, 166, 42, 0.32);
+  background: linear-gradient(160deg, #FFFFFF 0%, #F3F0EA 100%);
+  box-shadow: 0 1px 2px rgba(15, 41, 66, 0.03),
+              0 14px 32px -16px rgba(15, 41, 66, 0.16),
+              inset 0 2px 5px rgba(15, 41, 66, 0.04),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.7);
 }
 
-/* ─── Tabs — inactive: gold-bordered, navy text ───────────── */
+/* Sliding thumb — 4 equal segments, positioned with pure CSS percentages.
+   Inherits the colour identity of the service panel it controls. */
+.svc-tabs-indicator {
+  position: absolute;
+  top: 0.4375rem;
+  bottom: 0.4375rem;
+  left: 0.4375rem;
+  width: calc((100% - 0.875rem) / 4);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--gold);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.28s ease,
+              box-shadow 0.28s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.svc-tabs-indicator[data-tab-theme="purple"] {
+  background: linear-gradient(165deg, #7A3EA6 0%, #5E2A84 55%, #45195F 100%);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.25) inset,
+              0 8px 18px -6px rgba(94, 42, 132, 0.42),
+              0 3px 8px rgba(94, 42, 132, 0.26);
+}
+.svc-tabs-indicator[data-tab-theme="navy"] {
+  background: linear-gradient(165deg, #1F5580 0%, var(--navy) 55%, #081826 100%);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.18) inset,
+              0 8px 18px -6px rgba(15, 41, 66, 0.42),
+              0 3px 8px rgba(15, 41, 66, 0.26);
+}
+.svc-tabs-indicator[data-tab-theme="teal"] {
+  background: linear-gradient(165deg, #276068 0%, #1A3E44 55%, #0C1E21 100%);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.18) inset,
+              0 8px 18px -6px rgba(26, 62, 68, 0.42),
+              0 3px 8px rgba(26, 62, 68, 0.26);
+}
+.svc-tabs-indicator[data-tab-theme="sandstone"] {
+  background: linear-gradient(165deg, #ECC65C 0%, #D4A62A 55%, #A67A1B 100%);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.45) inset,
+              0 8px 18px -6px rgba(212, 166, 42, 0.40),
+              0 3px 8px rgba(212, 166, 42, 0.24);
+}
+
 .svc-tab {
-  padding: 0.875rem 1.75rem;
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  font-family: inherit;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--navy);
-  background: var(--white);
-  border: 1.5px solid rgba(212, 166, 42, 0.55);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--muted);
+  background: transparent;
+  padding: 1.0625rem 1rem;
+  border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  white-space: nowrap;
-  letter-spacing: 0.01em;
-  transition: color 0.22s ease, border-color 0.22s ease,
-              box-shadow 0.22s ease, transform 0.22s ease,
-              background 0.22s ease;
+  transition: color 0.28s ease, transform 0.25s cubic-bezier(0.3, 1.2, 0.4, 1);
 }
 
-.svc-tab:hover {
-  border-color: #E89B22;
-  background: rgba(232, 155, 34, 0.06);
-  box-shadow: 0 4px 14px rgba(15, 41, 66, 0.09);
-  transform: translateY(-2px);
+.svc-tab:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  right: 0;
+  width: 1px;
+  background: rgba(15, 41, 66, 0.07);
+  transition: opacity 0.25s ease;
 }
 
-/* Active — structural base (colour applied per-theme below) */
-.svc-tab--active {
-  font-weight: 700;
-  border-color: transparent;
-  transform: translateY(-3px);
+.svc-tab--active::after,
+.svc-tab:has(+ .svc-tab--active)::after {
+  opacity: 0;
 }
 
-/* Active tab colours match the service panel theme */
-.svc-tab[data-tab-theme="purple"].svc-tab--active {
-  background: #5E2A84;
-  color: var(--white);
-  box-shadow: 0 6px 22px rgba(94,42,132,0.35);
-}
-.svc-tab[data-tab-theme="navy"].svc-tab--active {
-  background: var(--navy);
-  color: var(--white);
-  box-shadow: 0 6px 22px rgba(15,41,66,0.30);
-}
-.svc-tab[data-tab-theme="teal"].svc-tab--active {
-  background: #1A3E44;
-  color: var(--white);
-  box-shadow: 0 6px 22px rgba(26,62,68,0.30);
-}
-.svc-tab[data-tab-theme="sandstone"].svc-tab--active {
-  background: #D4A62A;
+.svc-tab:hover:not(.svc-tab--active) {
   color: var(--navy);
-  box-shadow: 0 6px 22px rgba(212,166,42,0.35);
+}
+
+.svc-tab:active {
+  transform: scale(0.97);
+  transition-duration: 0.15s;
+}
+
+.svc-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 166, 42, 0.55);
+}
+
+/* Active — text colour matches the thumb it now sits on */
+.svc-tab--active {
+  color: var(--white);
+}
+
+.svc-tab[data-tab-theme="sandstone"].svc-tab--active {
+  color: var(--navy);
 }
 
 /* ─── Showcase — outer wrapper (transitions background) ───── */
@@ -1102,13 +1155,10 @@ section {
     padding-block: 2.5rem 3.5rem;
   }
 
-  .svc-tabs {
-    gap: 0.5rem;
-  }
-
   .svc-tab {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.25;
   }
 
   .svc-showcase-text {
@@ -1117,6 +1167,12 @@ section {
 
   .svc-showcase-visual {
     min-height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-tab {
+    transition-duration: 0.01ms !important;
   }
 }
 
